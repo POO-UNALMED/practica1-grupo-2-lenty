@@ -9,23 +9,23 @@ public class Vehiculo {
 	private Boolean documentosAlDia;
 	private Repartidor repartidor;
 	
-	Vehiculo() {
+	public Vehiculo() {
 		this(null, 0, null, null);
 	}
 	
-	Vehiculo(String placa, int matricula) {
+	public Vehiculo(String placa, int matricula) {
 		this(placa, matricula, null, null);
 	}
-	Vehiculo(int matricula, String marca) {
+	public Vehiculo(int matricula, String marca) {
 		this(null, matricula , marca, null);
 	}
-	Vehiculo(int matricula) {
+	public Vehiculo(int matricula) {
 		this(null, matricula, null, null);
 	}
-	Vehiculo(Repartidor repartidor) {
+	public Vehiculo(Repartidor repartidor) {
 		this(null, 0, null, repartidor);
 	} 
-	Vehiculo(String placa, int matricula, String marca) {
+	public Vehiculo(String placa, int matricula, String marca) {
 		this(placa, matricula, marca, null);
 	}
 		
