@@ -8,6 +8,26 @@ public class Vehiculo {
 	private String marca;
 	private Boolean documentosAlDia;
 	private Repartidor repartidor;
+	
+	Vehiculo() {
+		this(null, 0, null, null);
+	}
+	
+	Vehiculo(String placa, int matricula) {
+		this(placa, matricula, null, null);
+	}
+	Vehiculo(int matricula, String marca) {
+		this(null, matricula , marca, null);
+	}
+	Vehiculo(int matricula) {
+		this(null, matricula, null, null);
+	}
+	Vehiculo(Repartidor repartidor) {
+		this(null, 0, null, repartidor);
+	} 
+	Vehiculo(String placa, int matricula, String marca) {
+		this(placa, matricula, marca, null);
+	}
 		
 	
 	Vehiculo(String placa, int matricula, String marca, Repartidor repartidor) {
@@ -54,12 +74,12 @@ public class Vehiculo {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public Boolean getDocumentosAldia() {
+	/*public Boolean getDocumentosAldia() {
 		return documentosAlDia;
 	}
 	public void setDocumentosAldia(Boolean documentosAldia) {
 		this.documentosAlDia = documentosAldia;
-	}
+	}*/
 	public Repartidor getRepartidor() {
 		return repartidor;
 	}
