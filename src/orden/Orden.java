@@ -1,10 +1,11 @@
 package orden;
 import java.util.*;
+import sede.*;
 import gestionHumana.*;
 public class Orden {
 	private int id;
 	private Cliente cliente;
-	// private Sede sede;
+	private Sede sede;
 	private Repartidor repartidor;
 	private int valor;
 	private int cantProductos;
@@ -35,12 +36,12 @@ public class Orden {
 	Cliente getCliente() {
 		return this.cliente;
 	}
-	//void setSede(Sede i){
-	//this.sede=i;
-	//}
-	//Sede getSede(){
-	//return this.sede;
-	//}
+	void setSede(Sede i){
+	this.sede=i;
+	}
+	Sede getSede(){
+	return this.sede;
+	}
 	void setRepartidor(Repartidor i) {
 		this.repartidor=i;
 	}
