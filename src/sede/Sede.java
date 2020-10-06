@@ -4,7 +4,6 @@ public class Sede {
 	private static List<Sede> sedes= new ArrayList<Sede>();
 	private String direccion;
 	private long telefono;
-	private int ventas;
 	
 	public Sede(String direccion, long telefono) {
 		this.direccion = direccion;
@@ -21,14 +20,14 @@ public class Sede {
 	
 	public Sede sedeMayorVenta() {
 		int aux = 0;
-		int p = 0;
+		Sede p = null;
 		for (int i=0;i<sedes.size();i++) {
-			if (sedes.get(i).ventas>aux) {
-				aux = sedes.get(i).ventas;
-				p = i;
+			if (Collections.frequency(sedes, sedes.get(i))>aux) {
+				aux = Collections.frequency(sedes, sedes.get(i));
+				p = sedes.get(i);
 			}
 		}
-		return sedes.get(p);
+		return p;
 	}
 	
 	public String getDireccion() {
