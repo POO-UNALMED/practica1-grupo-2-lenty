@@ -4,7 +4,7 @@ import gestionHumana.*;
 public class Orden {
 	private int id;
 	private Cliente cliente;
-	// private Sede sede;
+	private Sede sede;
 	public Repartidor repartidor;
 	private int valor;
 	private int cantProductos;
@@ -21,6 +21,12 @@ public class Orden {
 		
 	}
 	public void rechazarOrden(Orden i) {
+		
+	}
+	public void ordenEntregada() {
+		
+	}
+	public void ordenRecogida() {
 		
 	}
 	
