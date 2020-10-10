@@ -6,12 +6,14 @@ public class Orden {
 	private int id;
 	private Cliente cliente;
 	private Sede sede;
-	private Repartidor repartidor;
+
+	public Repartidor repartidor;
+
 	private int valor;
 	private int cantProductos;
 	// private List<Producto> productos= new ArrayList<>();
 	private float pesoTotal;
-	private boolean estado;
+	public String estado;
 	public void cancelarOrden(Orden i) {
 		
 	}
@@ -24,6 +26,14 @@ public class Orden {
 	public void rechazarOrden(Orden i) {
 		
 	}
+	public void ordenEntregada() {
+		
+	}
+	public void ordenRecogida() {
+		
+	}
+	
+	
 	void setId(int i) {
 		this.id=i;
 	}
@@ -65,11 +75,5 @@ public class Orden {
 	}
 	float getPesoTotal() {
 		return this.pesoTotal;
-	}
-	void setEstado(boolean i) {
-		this.estado=i;
-	}
-	boolean getEstado() {
-		return this.estado;
 	}
 }
