@@ -1,7 +1,9 @@
 package orden;
 import java.util.*;
 import gestionHumana.*;
+import sede.Sede;
 public class Producto {
+	private static List<Producto> productos= new ArrayList<>();
 	private String nombre;
 	private String descripcion;
 	private long precio;
@@ -10,6 +12,22 @@ public class Producto {
 		this.descripcion=des;
 		this.precio=pre;
 	}
+	
+	
+	public Producto productoMasVendido() {
+		int aux = 0;
+		Producto p = null;
+		for (int i=0;i<productos.size();i++) {
+			if (Collections.frequency(productos, productos.get(i))>aux) {
+				aux = Collections.frequency(productos, productos.get(i));
+				p = productos.get(i);
+			}
+		}
+		return p;
+	}
+	
+	
+	
 	void setNombre(String i) {
 		this.nombre=i;
 	}
