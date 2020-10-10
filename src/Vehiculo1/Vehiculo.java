@@ -1,13 +1,15 @@
 package Vehiculo1;
+import java.util.*;
 import gestionHumana.*;
 
 public class Vehiculo {
 	private String placa;
-	//private String propietario;
+	private String propietario;
 	private int matricula;
 	private String marca;
-	private Boolean documentosAlDia;
-	private Repartidor repartidor;
+	public Boolean documentosAlDia;
+	public Repartidor repartidor;
+	public static LinkedList<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
 	
 	public Vehiculo() {
 		this(null, 0, null, null);
@@ -56,12 +58,12 @@ public class Vehiculo {
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-	/*public String getPropietario() {
+	public String getPropietario() {
 		return propietario;
 	}
 	public void setPropietario(String propietario) {
 		this.propietario = propietario;
-	}*/
+	}
 	public int getMatricula() {
 		return matricula;
 	}
@@ -74,12 +76,12 @@ public class Vehiculo {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	/*public Boolean getDocumentosAldia() {
+	public Boolean getDocumentosAldia() {
 		return documentosAlDia;
 	}
 	public void setDocumentosAldia(Boolean documentosAldia) {
 		this.documentosAlDia = documentosAldia;
-	}*/
+	}
 	public Repartidor getRepartidor() {
 		return repartidor;
 	}
