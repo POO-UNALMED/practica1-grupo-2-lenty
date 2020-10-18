@@ -1,4 +1,4 @@
-package Vehiculo1;
+package vehiculo;
 import java.util.*;
 import gestionHumana.*;
 
