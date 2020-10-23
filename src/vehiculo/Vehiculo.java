@@ -1,20 +1,22 @@
 package vehiculo;
+import java.io.*;
 import java.util.*;
 import gestionHumana.*;
 
-public class Vehiculo {
+public class Vehiculo implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String placa;
 	private String propietario;
 	private int matricula;
 	private String marca;
 	public Boolean documentosAlDia;
 	public Repartidor repartidor;
-	public static LinkedList<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
-	
+	private static LinkedList<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
+
 	public Vehiculo() {
 		this(null, 0, null, null);
 	}
-	
+
 	public Vehiculo(String placa, int matricula) {
 		this(placa, matricula, null, null);
 	}
@@ -26,12 +28,17 @@ public class Vehiculo {
 	}
 	public Vehiculo(Repartidor repartidor) {
 		this(null, 0, null, repartidor);
-	} 
+	}
 	public Vehiculo(String placa, int matricula, String marca) {
 		this(placa, matricula, marca, null);
 	}
-		
-	
+		static public consultarVehiculo() {
+
+
+		}
+
+
+
 	Vehiculo(String placa, int matricula, String marca, Repartidor repartidor) {
 		this.placa = placa;
 		this.matricula = matricula;
@@ -39,19 +46,19 @@ public class Vehiculo {
 		this.repartidor = repartidor;
 		this.estadoDocumentos();
 	}
-	
+
 	public Boolean estadoDocumentos() {
 		if  (placa.equals(null) || matricula == 0 || marca.equals(null) )  {
-			
+
 			return documentosAlDia = false;
 		}
 		else {
 			return documentosAlDia = true;
 		}
-		
+
 	}
-	
-				
+
+
 	public String getPlaca() {
 		return placa;
 	}
@@ -88,9 +95,15 @@ public class Vehiculo {
 	public void setRepartidor(Repartidor repartidor) {
 		this.repartidor = repartidor;
 	}
-	
-	
+
+	public static LinkedList<Vehiculo> getVehiculos() {
+		return vehiculos;
+	}
+
+	public static void adicionarVehiculo(Vehiculo vehiculo) {
+		vehiculos.add(vehiculo);
+	}
+
+
 
 }
-
-

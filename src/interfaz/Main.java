@@ -21,7 +21,7 @@ public class Main {
 	static void menuInicial () {
 		System.out.println("________________________\n");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Menú de Usuarios \n2 - Menú de Ordenes\n3 - Menú de Productos \n4 - Menú de Vehiculos \n5 - Menú de Sedes";
+		String aux="1 - MenÃº de Usuarios \n2 - MenÃº de Ordenes\n3 - MenÃº de Productos \n4 - MenÃº de Vehiculos \n5 - MenÃº de Sedes";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -47,18 +47,19 @@ public class Main {
 				break;
 				
 			case "4":
-				System.out.println("Se entro 4");
+				menuVehiculos();
 				break;
 				
 			case "5":
-				System.out.println("Se entro 5");
+				menuSedes();
+
 				break;
 		}
 	}
 	
 	static void menuUsuarios() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("MenÃº Usuarios");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Clientes \n2 - Repartidores\n3 - Regresar";
 		System.out.println(aux);
@@ -87,5 +88,76 @@ public class Main {
 
 		}
 	}
+
+	static void menuVehiculos() {
+		System.out.println("________________________\n");
+		System.out.println("MenÃº Usuarios");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Consultar Vehiculos \n2 - Registrar Vehiculos\n3 - Modificar Vehiculos\n4 - Eliminar Vehiculos\n5 -Regresar al menu principal";
+		System.out.println(aux);
+		while (true) {
+			op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5")) {
+				break;
+			}
+			else {
+				System.out.println("Ingresa una opcion valida");
+				System.out.println(aux);	
+			}
+		}
+		switch(op) {
+			case "1":
+				
+				break;
+				
+			case "2":
+				
+				break;
+				
+			case "3":
+				
+				break;
+			case "4":
+				
+				break;
+				
+			case "5":
+				menuInicial();
+				break;	
+
+		}
+	}
+	static void menuSedes() {
+		System.out.println("________________________\n");
+		System.out.println("MenÃº Usuarios");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Clientes \n2 - Repartidores\n3 - Regresar";
+		System.out.println(aux);
+		while (true) {
+			op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+				break;
+			}
+			else {
+				System.out.println("Ingresa una opcion valida");
+				System.out.println(aux);	
+			}
+		}
+		switch(op) {
+			case "1":
+				
+				break;
+				
+			case "2":
+				System.out.println("Se entro 2");
+				break;
+				
+			case "3":
+				menuInicial();
+				break;
+
+		}
+	}
+
 	
 }
