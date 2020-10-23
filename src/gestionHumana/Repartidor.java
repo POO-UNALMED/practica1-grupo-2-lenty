@@ -1,7 +1,8 @@
 package gestionHumana;
 import java.util.Iterator;
 import java.util.LinkedList;
-import Vehiculo1.*;
+
+import vehiculo.*;
 
 
 public class Repartidor extends Persona {

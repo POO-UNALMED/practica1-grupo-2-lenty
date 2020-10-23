@@ -21,7 +21,7 @@ public class Main {
 	static void menuInicial () {
 		System.out.println("________________________\n");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Menú de Usuarios \n2 - Menú de Ordenes\n3 - Menú de Productos \n4 - Menú de Vehiculos \n5 - Menú de Sedes";
+		String aux="1 - MenÃº de Usuarios \n2 - MenÃº de Ordenes\n3 - MenÃº de Productos \n4 - MenÃº de Vehiculos \n5 - MenÃº de Sedes";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -52,13 +52,14 @@ public class Main {
 				
 			case "5":
 				menuSedes();
+
 				break;
 		}
 	}
 	
 	static void menuUsuarios() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("MenÃº Usuarios");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Clientes \n2 - Repartidores\n3 - Regresar";
 		System.out.println(aux);
@@ -87,9 +88,10 @@ public class Main {
 
 		}
 	}
+
 	static void menuVehiculos() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("MenÃº Usuarios");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Consultar repartidores \n2 - Registrar repartidor\n3 - Modificar repartidor\n4 - Eliminar Repartidor\n5 -Regresar al menu principal";
 		System.out.println(aux);
@@ -127,7 +129,7 @@ public class Main {
 	}
 	static void menuSedes() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("MenÃº Usuarios");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Clientes \n2 - Repartidores\n3 - Regresar";
 		System.out.println(aux);
@@ -156,5 +158,6 @@ public class Main {
 
 		}
 	}
+
 	
 }
