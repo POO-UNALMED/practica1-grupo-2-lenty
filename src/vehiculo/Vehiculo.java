@@ -12,11 +12,11 @@ public class Vehiculo implements Serializable {
 	public Boolean documentosAlDia;
 	public Repartidor repartidor;
 	private static LinkedList<Vehiculo> vehiculos = new LinkedList<Vehiculo>();
-	
+
 	public Vehiculo() {
 		this(null, 0, null, null);
 	}
-	
+
 	public Vehiculo(String placa, int matricula) {
 		this(placa, matricula, null, null);
 	}
@@ -28,17 +28,17 @@ public class Vehiculo implements Serializable {
 	}
 	public Vehiculo(Repartidor repartidor) {
 		this(null, 0, null, repartidor);
-	} 
+	}
 	public Vehiculo(String placa, int matricula, String marca) {
 		this(placa, matricula, marca, null);
 	}
 		static public consultarVehiculo() {
-			
-	
+
+
 		}
-		
-	
-	
+
+
+
 	Vehiculo(String placa, int matricula, String marca, Repartidor repartidor) {
 		this.placa = placa;
 		this.matricula = matricula;
@@ -46,19 +46,19 @@ public class Vehiculo implements Serializable {
 		this.repartidor = repartidor;
 		this.estadoDocumentos();
 	}
-	
+
 	public Boolean estadoDocumentos() {
 		if  (placa.equals(null) || matricula == 0 || marca.equals(null) )  {
-			
+
 			return documentosAlDia = false;
 		}
 		else {
 			return documentosAlDia = true;
 		}
-		
+
 	}
-	
-				
+
+
 	public String getPlaca() {
 		return placa;
 	}
@@ -103,9 +103,7 @@ public class Vehiculo implements Serializable {
 	public static void adicionarVehiculo(Vehiculo vehiculo) {
 		vehiculos.add(vehiculo);
 	}
-	
-	
+
+
 
 }
-
-

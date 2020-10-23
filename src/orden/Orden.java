@@ -14,23 +14,38 @@ public class Orden {
 	// private List<Producto> productos= new ArrayList<>();
 	private float pesoTotal;
 	public String estado;
-	public void cancelarOrden(Orden i) {
+	public static void cancelarOrden(Orden i) {
+		if(i.estado != "Entregada" && i.estado != "En camino") {
+			i = null;
+			System.out.println("Orden cancelada con exito");
+		}
+		else if (i.estado == "Entregada"){
+			System.out.println("No se puede cancelar la orden, ya fue entregada");
+		}
+		else if (i.estado == "En camino"){
+			System.out.println("No se puede cancelar la orden, ya fue enviada");
+		}
 		
 	}
 	public void modificarOrden(Orden i) {
 		
 	}
-	public void aceptarOrden(Orden i) {
+	public void aceptarOrden() {
+		this.estado = "En proceso";
+		System.out.println("La orden fue aceptada con exito");
 		
 	}
 	public void rechazarOrden(Orden i) {
 		
 	}
 	public void ordenEntregada() {
+		this.estado = "Entregada";
+		System.out.println("La orden fue entregada con exito");
 		
 	}
 	public void ordenRecogida() {
-		
+		this.estado = "En camino";
+		System.out.println("La orden fue recogida con exito");
 	}
 	
 	
