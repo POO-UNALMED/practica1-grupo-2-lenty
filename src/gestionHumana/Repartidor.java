@@ -1,7 +1,8 @@
 package gestionHumana;
 import java.util.Iterator;
 import java.util.LinkedList;
-import Vehiculo1.*;
+
+import vehiculo.*;
 
 
 public class Repartidor extends Persona {
@@ -46,7 +47,7 @@ public class Repartidor extends Persona {
     }
     
     public void asignarVehiculo() {
-        Iterator <Vehiculo> iterador = (Vehiculo.vehiculos).listIterator(); 
+        Iterator <Vehiculo> iterador = (Vehiculo.getVehiculos()).listIterator(); 
         while(iterador.hasNext()) {
         	vehiculo = iterador.next();
         	if (vehiculo.documentosAlDia == true && vehiculo.repartidor == null ) {

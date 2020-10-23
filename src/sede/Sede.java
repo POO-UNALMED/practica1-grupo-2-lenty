@@ -1,6 +1,8 @@
 package sede;
 import java.util.*;
-public class Sede {
+import java.io.*;
+public class Sede implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private static List<Sede> sedes= new ArrayList<Sede>();
 	private String direccion;
 	private long telefono;

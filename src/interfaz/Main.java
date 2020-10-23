@@ -91,7 +91,7 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Usuarios");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Consultar repartidores \n2 - Registrar repartidor\n3 - Modificar repartidor\n4 - Eliminar Repartidor\n5 -Regresar al menu principal";
+		String aux="1 - Consultar Vehiculos \n2 - Registrar Vehiculos\n3 - Modificar Vehiculos\n4 - Eliminar Vehiculos\n5 -Regresar al menu principal";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
