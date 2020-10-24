@@ -27,7 +27,7 @@ public class Main {
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5") || op.equals("6")) {
 				break;
 			}
 			else {
@@ -96,7 +96,7 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Usuarios");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Consultar Vehiculos \n2 - Registrar Vehiculos \n3 - Modificar Vehiculos \n4 - Eliminar Vehiculos \n5 -Regresar al menu principal";
+		String aux="1 - Consultar Vehiculos \n2 - Registrar Vehiculo \n3 - Modificar Vehiculo \n4 - Eliminar Vehiculo \n5 - Regresar al menu principal";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -110,18 +110,64 @@ public class Main {
 		}
 		switch(op) {
 			case "1":
-				
+				Vehiculo.consultarVehiculo();
+				menuVehiculos();
 				break;
 				
 			case "2":
-				
+				System.out.println("Ingrese la placa del vehiculo"); 
+				String placa = in.next();
+				System.out.println("Ingrese el modelo del vehiculo(Sin espacios)");
+				String modelo = in.next();
+				System.out.println("Ingrese la matricula (Solo numeros)");
+				int matricula = in.nextInt();
+				System.out.println("Ingrese true si el vehiculo se encuentra aegurado o false en caso contrario");
+				boolean asegurado = in.nextBoolean();
+				Vehiculo vehiculo = new Vehiculo(placa, modelo, matricula, asegurado);
+				Vehiculo.adicionarVehiculo(vehiculo);
+				menuVehiculos();
 				break;
 				
 			case "3":
+				Vehiculo.consultarVehiculo();
+				System.out.println("Ingrese el numero de la lista del vehiculo que desea modificar");
+				int numero = in.nextInt();
+				Vehiculo vehiculo1 =(Vehiculo.getVehiculos()).get(numero);
+				System.out.println("Seleccione la caracteristica a modificar");
+				System.out.println("1 - Placa \n2 - Modelo \n3 - Matricula \n4 - Seguro \n5 -Regresar al menu vehiculo");
+				op=in.next();
+				switch(op) {
 				
+				case"1":
+					System.out.println("Ingrese la placa del vehiculo (sin espacios)");
+					String placa1 = in.next();
+					vehiculo1.setPlaca(placa1);
+					break;
+				case"2":
+					System.out.println("Ingrese el modelo del vehiculo (sin espacios)");
+					String modelo1 = in.next();
+					vehiculo1.setModelo(modelo1);
+					break;
+				case"3":
+					System.out.println("Ingrese la placa del vehiculo (Solo numeros)");
+					int matricula1 = in.nextInt();
+					vehiculo1.setMatricula(matricula1);
+					break;    
+				case"4":
+					System.out.println("Ingrese true si el vehiculo se encuentra aegurado o false en caso contrario");
+					boolean asegurado1 = in.nextBoolean();
+					vehiculo1.setAsegurado(asegurado1);
+					break;
+				case"5":
+					menuVehiculos();
+					break;   
+				}
 				break;
 			case "4":
-				
+				Vehiculo.consultarVehiculo();
+				System.out.println("Ingrese el numero de la lista del vehiculo que desea modificar");
+				int numero1 = in.nextInt();
+				(Vehiculo.getVehiculos()).remove(numero1);
 				break;
 				
 			case "5":
@@ -130,6 +176,9 @@ public class Main {
 
 		}
 	}
+	
+	
+
 	static void menuSedes() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Usuarios");

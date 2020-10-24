@@ -11,7 +11,7 @@ public class Lector {
 		
 
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\scr\\baseDatos\\temp\\vehiculos.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numVehiculos = objectInputStream.readInt();
@@ -29,7 +29,7 @@ public class Lector {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\scr\\baseDatos\\temp\\vehiculos.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numVehiculos = objectInputStream.readInt();
