@@ -45,7 +45,7 @@ public class Main {
 				break;
 				
 			case "3":
-				System.out.println("Se entro 3");
+				menuProductos();
 				break;
 				
 			case "4":
@@ -92,6 +92,54 @@ public class Main {
 
 		}
 	}
+	static void menuProductos() {
+		System.out.println("________________________\n");
+		System.out.println("Menú Productos\n");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar productos mas vendidos \n4 - Regresar";
+		System.out.println(aux);
+		System.out.print("\nIngrese la opcion que desea: ");
+		while (true) {
+			
+			op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
+				break;
+			}
+			else {
+				System.out.print("\nIngresa una opcion valida: ");
+			}
+		}
+		switch(op) {
+		case "1":
+			System.out.print("\nIngrese el nombre del producto: ");
+			String nombre = in.next();
+			System.out.print("\nIngrese la descripcion del producto: ");
+			String descripcion = in.next();
+			System.out.print("\nIngrese el precio del producto: ");
+			long precio = in.nextLong();
+			System.out.print("\nIngrese la cantidad del producto: ");
+			int cantidad = in.nextInt();
+			Producto.agregarProducto(nombre, descripcion, precio, cantidad);
+			menuProductos();
+			break;
+			
+		case "2":
+			Producto.verProductos();
+			menuProductos();
+			break;
+			
+		case "3":
+			System.out.println(Producto.productoMasVendido());
+			menuProductos();
+			break;
+
+		case "4":
+			menuInicial();
+			break;
+	}
+	
+}
+
 	static void menuVehiculos() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Usuarios");
@@ -213,5 +261,7 @@ public class Main {
 
 		}
 	}
+	
+	
 	
 }
