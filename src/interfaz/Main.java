@@ -14,7 +14,7 @@ public class Main {
 	static String op;
 	
 	public static void main(String[] args) {		
-		System.out.println("Bienvenido");				
+						
 		Lector.Leer();
 		menuInicial();
 				
@@ -160,7 +160,10 @@ public class Main {
 					break;
 				case"5":
 					menuVehiculos();
-					break;   
+					break; 
+				//default:
+					//System.out.println("Ingresa una opcion valida");
+					
 				}
 				break;
 			case "4":

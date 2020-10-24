@@ -5,7 +5,7 @@ import vehiculo.Vehiculo;
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
-	static File archivo = new File(" ");
+	static File archivo = new File("");
 	
 	public static void Leer() {
 		
@@ -19,7 +19,7 @@ public class Lector {
 			for (int i =1; i<=numVehiculos; i++ ) {
 				vehiculo = (Vehiculo) objectInputStream.readObject();
 				Vehiculo.adicionarVehiculo(vehiculo);
-				// Adicionar print en caso de querer mostrarlos por consola
+				
 				
 			}
 			objectInputStream.close();
@@ -29,14 +29,13 @@ public class Lector {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\sedes.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numVehiculos = objectInputStream.readInt();
-			Vehiculo vehiculo;
+			
 			for (int i =1; i<=numVehiculos; i++ ) {
-				vehiculo = (Vehiculo) objectInputStream.readObject();
-				Vehiculo.adicionarVehiculo(vehiculo);
+				Vehiculo.adicionarVehiculo(((Vehiculo) objectInputStream.readObject()));
 				// Adicionar print en caso de querer mostrarlos por consola
 				
 			}
