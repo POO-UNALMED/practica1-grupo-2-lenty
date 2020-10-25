@@ -74,6 +74,38 @@ public class Main {
 		}
 		switch(op) {
 			case "1":
+				menuClientes();
+				break;
+				
+			case "2":
+				menuRepartidores();
+				break;
+				
+			case "3":
+				menuInicial();
+				break;
+
+		}
+	}
+	
+	static void menuClientes() {
+		System.out.println("________________________\n");
+		System.out.println("Menú Clientes");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Ver Clientes \n2 - Agregar Cliente\n3 - Regresar";
+		System.out.println(aux);
+		while (true) {
+			op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+				break;
+			}
+			else {
+				System.out.println("Ingresa una opcion valida");
+				System.out.println(aux);	
+			}
+		}
+		switch(op) {
+			case "1":
 				
 				break;
 				
@@ -82,7 +114,39 @@ public class Main {
 				break;
 				
 			case "3":
-				menuInicial();
+				menuUsuarios();
+				break;
+
+		}
+	}
+	
+	static void menuRepartidores() {
+		System.out.println("________________________\n");
+		System.out.println("Menú Repartidores");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor\n3 - Regresar";
+		System.out.println(aux);
+		while (true) {
+			op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+				break;
+			}
+			else {
+				System.out.println("Ingresa una opcion valida");
+				System.out.println(aux);	
+			}
+		}
+		switch(op) {
+			case "1":
+				
+				break;
+				
+			case "2":
+				System.out.println("Se entro 2");
+				break;
+				
+			case "3":
+				menuUsuarios();
 				break;
 
 		}
