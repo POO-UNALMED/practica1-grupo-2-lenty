@@ -1,7 +1,12 @@
 package sede;
 import java.util.*;
-public class Sede {
-	private static List<Sede> sedes= new ArrayList<Sede>();
+
+import vehiculo.Vehiculo;
+
+import java.io.*;
+public class Sede implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private static LinkedList<Sede> sedes= new LinkedList<Sede>();
 	private String direccion;
 	private long telefono;
 	
@@ -41,6 +46,13 @@ public class Sede {
 	}
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
+	}
+	public static LinkedList<Sede> getSede() {
+		return sedes;
+	}
+
+	public static void adicionarSede(Sede sede) {
+		sedes.add(sede);
 	}
 	
 	
