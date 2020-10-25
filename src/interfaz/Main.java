@@ -111,11 +111,35 @@ public class Main {
 		}
 		switch(op) {
 			case "1":
-				
+				Cliente.verClientes();
+				menuClientes();
 				break;
 				
 			case "2":
-				System.out.println("Se entro 2");
+				System.out.print("\nIngrese el numero de documento del Cliente: ");
+				long id = in.nextLong();
+				System.out.print("\nIngrese el nombre del Cliente: ");
+				String nombre = in.next();
+				System.out.print("\nIngrese el telefono del Cliente: ");
+				String telefono = in.next();
+				System.out.print("\nIngrese el genero del Cliente: ");
+				String genero = in.next();
+				System.out.print("\nIngrese la direccion del Cliente: ");
+				String dir = in.next();
+				System.out.print("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
+				String pago = in.next();
+				String metPago;
+				long tarj;
+				if (pago.equals("1")) {
+					metPago = "Efectivo";
+					tarj = 0000000000;
+				} else {
+					metPago = "Tarjeta";
+					System.out.print("\nIngrese el numero de tarjeta del Cliente: ");
+					tarj = in.nextLong();
+				}
+				Cliente.agregarCliente(dir, metPago, tarj, id, nombre, genero, telefono);
+				menuClientes();
 				break;
 				
 			case "3":
@@ -143,11 +167,25 @@ public class Main {
 		}
 		switch(op) {
 			case "1":
-				
+				Cliente.verClientes();
+				menuClientes();
 				break;
 				
 			case "2":
-				System.out.println("Se entro 2");
+				System.out.print("\nIngrese el numero de documento del Repartidor: ");
+				long id = in.nextLong();
+				System.out.print("\nIngrese el nombre del Repartidor: ");
+				String nombre = in.next();
+				System.out.print("\nIngrese el telefono del Repartidor: ");
+				String telefono = in.next();
+				System.out.print("\nIngrese el genero del Repartidor: ");
+				String genero = in.next();
+				System.out.print("\nIngrese la entidad de salud del Repartidor: ");
+				String entSalud = in.next();
+				System.out.print("\nIngrese el salario del Repartidor: ");
+				int salario = in.nextInt();
+				Repartidor.agregarRepartidor(entSalud, salario, true, id, nombre, genero, telefono);
+				menuRepartidores();
 				break;
 				
 			case "3":

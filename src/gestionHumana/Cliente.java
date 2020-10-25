@@ -1,10 +1,15 @@
 package gestionHumana;
 
+import java.util.ArrayList;
+
+import orden.Producto;
+
 public class Cliente extends Persona {
 	
 	private String direccion;
 	private String metPago;
 	private long tarjeta;
+	private static ArrayList<Cliente> clientes = new ArrayList<>();
 	
 	public Cliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
@@ -49,6 +54,18 @@ public class Cliente extends Persona {
     public void setTarjeta(long tarjeta) {
         this.tarjeta = tarjeta;
     }
+    
+	public static void agregarCliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
+		clientes.add(new Cliente(direccion, metPago, tarjeta, id, nombre, genero, telefono));
+		System.out.println("Cliente creado con exito.");
+	}
+	
+	public static void verClientes() {
+		for (int i = 0; i < clientes.size(); i++) {
+			System.out.println("\nCliente "+ (i+1));
+			System.out.println(clientes.get(i));
+		}
+	}
     
     public void crearOrden(){
         
