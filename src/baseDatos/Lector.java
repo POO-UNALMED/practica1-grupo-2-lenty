@@ -1,6 +1,8 @@
 package baseDatos;
 import java.io.*;
 
+import gestionHumana.Cliente;
+import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
 
 public class Lector {
@@ -45,8 +47,43 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+		// Repartidores
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numRepartidores = objectInputStream.readInt();
+			Repartidor repartidor;
+			for (int i =1; i <= numRepartidores; i++ ) {
+				repartidor = (Repartidor) objectInputStream.readObject();
+				Repartidor.adicionarRepartidor(repartidor);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		// Clientes
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\clientes.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numClientes = objectInputStream.readInt();
+			Cliente cliente;
+			for (int i =1; i <= numClientes; i++ ) {
+				cliente = (Cliente) objectInputStream.readObject();
+				Cliente.adicionarCliente(cliente);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
 	}
-	
-	
-
 }
