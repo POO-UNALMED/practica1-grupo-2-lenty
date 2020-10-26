@@ -244,7 +244,7 @@ public class Main {
 
 	static void menuVehiculos() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("Menú Vehiculos");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Consultar Vehiculos \n2 - Registrar Vehiculo \n3 - Modificar Vehiculo \n4 - Eliminar Vehiculo \n5 - Regresar al menu principal";
 		System.out.println(aux);
@@ -334,7 +334,7 @@ public class Main {
 
 	static void menuSedes() {
 		System.out.println("________________________\n");
-		System.out.println("Menú Usuarios");
+		System.out.println("Menú Sedes");
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Clientes \n2 - Repartidores\n3 - Regresar";
 		System.out.println(aux);
