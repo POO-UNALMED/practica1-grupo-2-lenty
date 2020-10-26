@@ -55,6 +55,7 @@ public class Repartidor extends Persona {
         	}
         }
     }
+    
     public void desasignarVehiculo() {
     	vehiculo.setRepartidor(null);
         vehiculo = null;    	
@@ -100,6 +101,14 @@ public class Repartidor extends Persona {
 			System.out.println("\nRepartidor "+ (i+1));
 			System.out.println(repartidores.get(i));
 		}
+	}
+	
+	public static LinkedList<Repartidor> getRepartidores() {
+		return repartidores;
+	}
+	
+	public static void adicionarRepartidor(Repartidor repartidor) {
+		repartidores.add(repartidor);
 	}
     
 }

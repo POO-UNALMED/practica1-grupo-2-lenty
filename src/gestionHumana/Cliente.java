@@ -1,15 +1,16 @@
 package gestionHumana;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import orden.Producto;
+import sede.Sede;
 
 public class Cliente extends Persona {
 	
 	private String direccion;
 	private String metPago;
 	private long tarjeta;
-	private static ArrayList<Cliente> clientes = new ArrayList<>();
+	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 	
 	public Cliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
@@ -65,6 +66,14 @@ public class Cliente extends Persona {
 			System.out.println("\nCliente "+ (i+1));
 			System.out.println(clientes.get(i));
 		}
+	}
+	
+	public static LinkedList<Cliente> getClientes() {
+		return clientes;
+	}
+	
+	public static void adicionarCliente(Cliente cliente) {
+		clientes.add(cliente);
 	}
     
     public void crearOrden(){
