@@ -113,7 +113,7 @@ public class Main {
 			Orden.consultarOrdenesActivas();
 			menuOrden();
 		case "2":
-			int id;
+			int id,cli,sed,rep;
 			Cliente c=null;
 			Sede s=null;
 			Repartidor r=null;
@@ -125,18 +125,50 @@ public class Main {
 			System.out.println("ID de la orden:");
 			id=in.nextInt();
 			System.out.println("Ingrese el indice del cliente de la orden, si lo desconoce, ingrese -1");
-			int cli=in.nextInt();
-			if(cli==-1) {
-				Cliente.verClientes();
-				System.out.println("Ingrese el indice del cliente de la orden");
+			while(true) {
 				cli=in.nextInt();
+				if(cli==-1) {
+					Cliente.verClientes();
+					System.out.println("Ingrese el indice del cliente de la orden");
+				}
+				else if(cli>=0 && cli<Cliente.getClientes().size()) {
+					c=Cliente.getClientes().get(cli);
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
 			}
-			else if(cli>=0 && cli<Cliente.getClientes().size()) {
-				c=Cliente.getClientes().get(cli);
+			System.out.println("Ingrese el indice de la sede de la orden, si lo desconoce, ingrese -1 ");
+			while(true) {
+				sed=in.nextInt();
+				if(sed==-1) {
+					//Falta mostrar las sedes
+					System.out.println("Ingrese el indice de la sede de la orden:");
+				}
+				else if(sed>=0 && sed<Sede.getSede().size()) {
+					s=Sede.getSede().get(sed);
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
 			}
-			//FALTA CLIENTE, SEDE Y REPARTIDOR
-			System.out.println("Sede de la orden: ");
-			System.out.println("Repartidor de la orden: ");
+			System.out.println("Ingrese el indice del repartidor de la orden, si lo desconoce, ingrese -1  ");
+			while(true) {
+				rep=in.nextInt();
+				if(rep==-1) {
+					Repartidor.verRepartidores();;
+					System.out.println("Ingrese el indice del repartidor de la orden:");
+				}
+				else if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==true ) {
+					r=Repartidor.repartidores.get(rep);
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
+			}
 			System.out.println("Valor de la Orden: ");
 			valor=in.nextInt();
 			System.out.println("Cantidad de productos: ");
