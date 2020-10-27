@@ -41,7 +41,7 @@ public class Main {
 				break;
 				
 			case "2":
-				System.out.println("Se entro 2");
+				menuOrden();
 				break;
 				
 			case "3":
@@ -92,7 +92,87 @@ public class Main {
 
 		}
 	}
-	
+	public static void menuOrden() {
+		System.out.println("________________________\n");
+		System.out.println("Menú Orden");
+		System.out.println("Seleccione una opcion");
+		String aux="1 - Ver ordenes activas \n2 - Crear orden \n3 - Modificar orden\n4 - Eliminar orden \n5 - Regresar";
+		System.out.println(aux);
+		while (true) {
+		op=in.next();
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5")) {
+				break;
+			}
+			else {
+				System.out.println("Ingresa una opcion valida");
+				System.out.println(aux);	
+			}
+		}
+		switch(op) {
+		case "1":
+			Orden.consultarOrdenesActivas();
+			menuOrden();
+		case "2":
+			int id;
+			Cliente c=null;
+			Sede s=null;
+			Repartidor r=null;
+			int valor;
+			int cantP;
+			float peso;
+			String es;
+			System.out.println("ingrese los parametros de la orden: \n");
+			System.out.println("ID de la orden:");
+			id=in.nextInt();
+			System.out.println("Ingrese el indice del cliente de la orden, si lo desconoce, ingrese -1");
+			int cli=in.nextInt();
+			if(cli==-1) {
+				Cliente.verClientes();
+				System.out.println("Ingrese el indice del cliente de la orden");
+				cli=in.nextInt();
+			}
+			else if(cli>=0 && cli<Cliente.getClientes().size()) {
+				c=Cliente.getClientes().get(cli);
+			}
+			//FALTA CLIENTE, SEDE Y REPARTIDOR
+			System.out.println("Sede de la orden: ");
+			System.out.println("Repartidor de la orden: ");
+			System.out.println("Valor de la Orden: ");
+			valor=in.nextInt();
+			System.out.println("Cantidad de productos: ");
+			cantP=in.nextInt();
+			System.out.println("Peso total de la orden: ");
+			peso=in.nextFloat();
+			System.out.println("Estado de la orden: ");
+			es=in.next();
+			new Orden(id,c,s,r,valor,cantP,peso,es);
+		
+		case "3":
+			System.out.println("Ingrese el indice de la orden que desea modificar, sí desconoce los indices, ingrese -1 ");
+			int o=in.nextInt();
+			if(o==-1) {
+				Orden.consultarOrdenesActivas();
+			}
+			else if(o>=0 && o<Orden.getOrdenes().size()) {
+				Orden.getOrdenes().get(o).modificarOrden();
+			}
+		
+		case "4":
+			System.out.println("Ingrese el indice de la orden que desea eliminar, sí desconoce los indices, ingrese -1 ");
+			int u=in.nextInt();
+			if(u==-1) {
+				Orden.consultarOrdenesActivas();
+			}
+			else if(u>=0 && u<Orden.getOrdenes().size()) {
+				Orden.cancelarOrden(u);
+				System.out.println("Se ha eliminado el elemento, volvera al menu de ordenes");
+				menuOrden();
+			}
+			
+		case "5":
+			menuInicial();
+		}
+	}
 	static void menuClientes() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Clientes");
@@ -363,4 +443,5 @@ public class Main {
 
 		}
 	}
+	
 }
