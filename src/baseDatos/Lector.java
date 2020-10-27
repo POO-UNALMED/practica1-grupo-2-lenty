@@ -4,6 +4,7 @@ import java.io.*;
 import gestionHumana.Cliente;
 import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
+import orden.Orden;
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
@@ -76,6 +77,24 @@ public class Lector {
 			for (int i =1; i <= numClientes; i++ ) {
 				cliente = (Cliente) objectInputStream.readObject();
 				Cliente.adicionarCliente(cliente);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\ordenes.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numOrdenes = objectInputStream.readInt();
+			Orden orden;
+			for (int i =1; i <= numOrdenes; i++ ) {
+				orden = (Orden) objectInputStream.readObject();
+				Orden.adicionarOrden(orden);
 				
 				
 			}

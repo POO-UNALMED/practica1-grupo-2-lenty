@@ -181,24 +181,30 @@ public class Main {
 		
 		case "3":
 			System.out.println("Ingrese el indice de la orden que desea modificar, sí desconoce los indices, ingrese -1 ");
-			int o=in.nextInt();
-			if(o==-1) {
-				Orden.consultarOrdenesActivas();
+			while(true) {
+				int o=in.nextInt();
+				if(o==-1) {
+					Orden.consultarOrdenesActivas();
+				}
+				else if(o>=0 && o<Orden.getOrdenes().size()) {
+					Orden.getOrdenes().get(o).modificarOrden();
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
 			}
-			else if(o>=0 && o<Orden.getOrdenes().size()) {
-				Orden.getOrdenes().get(o).modificarOrden();
-			}
-		
 		case "4":
 			System.out.println("Ingrese el indice de la orden que desea eliminar, sí desconoce los indices, ingrese -1 ");
-			int u=in.nextInt();
-			if(u==-1) {
-				Orden.consultarOrdenesActivas();
-			}
-			else if(u>=0 && u<Orden.getOrdenes().size()) {
-				Orden.cancelarOrden(u);
-				System.out.println("Se ha eliminado el elemento, volvera al menu de ordenes");
-				menuOrden();
+			while(true) {
+				int u=in.nextInt();
+				if(u==-1) {
+					Orden.consultarOrdenesActivas();
+				}
+				else if(u>=0 && u<Orden.getOrdenes().size()) {
+					Orden.cancelarOrden(u);
+					System.out.println("Se ha eliminado el elemento, volvera al menu de ordenes");
+					menuOrden();
+				}
 			}
 			
 		case "5":
