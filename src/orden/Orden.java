@@ -210,6 +210,9 @@ public class Orden {
 	public static LinkedList<Orden> getOrdenes(){
 		return Orden.ordenes;
 	}
+	public static void adicionarOrden(Orden i) {
+		ordenes.add(i);
+	}
 	private static boolean isNumeric(String cadena){
 		try {
 			Integer.parseInt(cadena);
@@ -218,4 +221,5 @@ public class Orden {
 			return false;
 		}
 	}
+	
 }
