@@ -9,6 +9,7 @@ public class Sede implements Serializable {
 	private static LinkedList<Sede> sedes= new LinkedList<Sede>();
 	private String direccion;
 	private long telefono;
+	private long cantVentas; 
 	
 	public Sede(String direccion, long telefono) {
 		this.direccion = direccion;
@@ -20,16 +21,23 @@ public class Sede implements Serializable {
 		
 	}
 	
+	static public void consultarSedes() {
+    	int i = 0;
+    	for(Sede sede: sedes) {
+    	System.out.println(i+"- Direccion:"+ sede.direccion+" teledono:"+sede.telefono+" Ventas:"+sede.cantVentas);
+    	i++;
+		}
+    }
 	
 	
-	
-	public Sede sedeMayorVenta() {
-		int aux = 0;
+	public static Sede sedeMayorVentas() {
+		long aux = 0;
+		int contador = 0;
 		Sede p = null;
-		for (int i=0;i<sedes.size();i++) {
-			if (Collections.frequency(sedes, sedes.get(i))>aux) {
-				aux = Collections.frequency(sedes, sedes.get(i));
-				p = sedes.get(i);
+		for (Sede sede : sedes) {
+			if (sede.cantVentas>aux) {
+				aux = sede.cantVentas;
+				p = sedes.get(contador);
 			}
 		}
 		return p;
