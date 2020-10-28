@@ -34,7 +34,7 @@ public class Vehiculo implements Serializable {
     static public void consultarVehiculo() {
     	int i = 0;
     	for(Vehiculo vehiculo: vehiculos) {
-    	System.out.println(i+"- Modelo:"+vehiculo.getModelo()+" Placa:"+vehiculo.getPlaca()+" NumeroMatricula:"+vehiculo.getMatricula()+" ¿Asegurado?"+vehiculo.isAsegurado()+" Repartidor:"+vehiculo.getRepartidor());
+    	System.out.println(i+"- Modelo:"+vehiculo.getModelo()+"\nPlaca:"+vehiculo.getPlaca()+"\n NumeroMatricula:"+vehiculo.getMatricula()+"\n ¿Asegurado?"+vehiculo.isAsegurado()+"\n Repartidor:"+vehiculo.getRepartidor());
     	i++;
 		}
     }

@@ -10,6 +10,7 @@ public class Cliente extends Persona implements Serializable {
 	private String metPago;
 	private long tarjeta;
 	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
+	private int compras;
 	
 	public Cliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
