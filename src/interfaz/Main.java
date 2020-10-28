@@ -522,7 +522,7 @@ public class Main {
 				String modelo = in.next();
 				System.out.println("Ingrese la matricula (Solo numeros)");
 				int matricula = in.nextInt();
-				System.out.println("Ingrese true si el vehiculo se encuentra aegurado o false en caso contrario");
+				System.out.println("Ingrese true si el vehiculo se encuentra asegurado o false en caso contrario");
 				boolean asegurado = in.nextBoolean();
 				Vehiculo vehiculo = new Vehiculo(placa, modelo, matricula, asegurado);
 				Vehiculo.adicionarVehiculo(vehiculo);
@@ -591,7 +591,7 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Sedes");
 		System.out.println("Seleccione una opcion");
-		String aux= "1 - Consultar sede \n2 - Registrar sede \n3 - Modificar sede \n4 - Eliminar sede \n5 - Contultar sede de mayor ventas  \n6 Regresar al menu principal";
+		String aux= "1 - Consultar sedes \n2 - Registrar sede \n3 - Modificar sede \n4 - Eliminar sede \n5 - Contultar sede de mayor ventas  \n6 - Regresar al menu principal";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -616,6 +616,7 @@ public class Main {
 				int telefono = in.nextInt();
 				Sede sede = new Sede (dir, telefono);
 				Sede.adicionarSede(sede);
+				menuSedes();
 				break;
 				
 			case "3":

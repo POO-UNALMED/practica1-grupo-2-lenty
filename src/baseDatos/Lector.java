@@ -6,6 +6,7 @@ import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
 import orden.Orden;
 import orden.Producto;
+import sede.Sede;
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
@@ -39,7 +40,7 @@ public class Lector {
 			int numVehiculos = objectInputStream.readInt();
 			
 			for (int i =1; i<=numVehiculos; i++ ) {
-				Vehiculo.adicionarVehiculo(((Vehiculo) objectInputStream.readObject()));
+				Sede.adicionarSede(((Sede) objectInputStream.readObject()));
 				// Adicionar print en caso de querer mostrarlos por consola
 				
 			}
