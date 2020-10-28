@@ -1,3 +1,6 @@
+/*La base de datos fue diseñada por Camilo y implementada en cada clase segun su respectivo usario, la funcion de este modulo es leer la información en los archivos txt 
+ * y llena las listas de cada clase con los objetos correspondientes
+ */
 package baseDatos;
 import java.io.*;
 
@@ -11,7 +14,7 @@ import sede.Sede;
 public class Lector {
 	static ObjectInputStream objectInputStream;
 	static File archivo = new File("");
-	
+	/*Este metodo se ejecuta al ejecutar el programa para cargar la base de datos de objetos de cada eespectiva clase*/
 	public static void Leer() {
 		
 

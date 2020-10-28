@@ -1,3 +1,4 @@
+/*Esta clase fue elabarada por Camilo, su finalidad es registrar todas las sedes de ventas*/
 package sede;
 import java.util.*;
 
@@ -5,6 +6,7 @@ import vehiculo.Vehiculo;
 
 import java.io.*;
 public class Sede implements Serializable {
+	/*El objetivo de esta clase es guardar la información de las diferentes sedes que pueden despachar una orden*/
 	private static final long serialVersionUID = 1L;
 	private static LinkedList<Sede> sedes= new LinkedList<Sede>();
 	private String direccion;
@@ -29,7 +31,7 @@ public class Sede implements Serializable {
 		}
     }
 	
-	
+	//Devuelve cual de todas las sedes ha tenido el mayor numero de ventas
 	public static Sede sedeMayorVentas() {
 		long aux = 0;
 		int contador = 0;

@@ -1,9 +1,12 @@
+/*Esta clase fue realiza por Camilo; su objetivo es describir cada vehiculo que puede tener los repartidores*/
 package vehiculo;
 import java.io.*;
 import java.util.*;
 import gestionHumana.*;
 
 public class Vehiculo implements Serializable {
+	/*En esta clase se guardan los vehiculos con sus atributos y en base a los atributos se determina si los objetos estan al dia, todos los objetos son guardados en una lista
+	 * y asi por ser consultados posteriormente*/
 	private static final long serialVersionUID = 1L;
 	private String placa;
 	private String modelo;
@@ -17,26 +20,7 @@ public class Vehiculo implements Serializable {
 	public Vehiculo(String placa, String modelo, int matricula, boolean asegurado) {
 		this(placa, modelo, matricula, asegurado, null);
 	}
-	public Vehiculo(String placa, String modelo , int matricula , Repartidor repartidor) {
-		this(placa, modelo, matricula, false, repartidor);
-	}
-	public Vehiculo(String placa, String modelo , int matricula ) {
-		this(placa, modelo, matricula, false, null);
-	}
-	
-	public Vehiculo(String placa, String modelo , boolean asegurado , Repartidor repartidor) {
-		this(placa, modelo, 0, asegurado, repartidor);
-	}
-	public Vehiculo(String placa, String modelo, boolean asegurado) {
-		this(placa, modelo, 0, asegurado, null);
-	}
-	public Vehiculo(String placa, String modelo , Repartidor repartidor) {
-		this(placa, modelo, 0, false, repartidor);
-	}
-	public Vehiculo(String placa, String modelo ) {
-		this(placa, modelo, 0, false, null);
-	}
-	
+
 	
 	public Vehiculo(String placa, String modelo , int matricula, boolean asegurado , Repartidor repartidor) {
 		this.placa = placa;
@@ -46,6 +30,7 @@ public class Vehiculo implements Serializable {
 		this.repartidor = repartidor;
 		this.estadoDocumentos();
 	}
+	//Devuelve la informacion de todos los vehiculos en la base de datos
     static public void consultarVehiculo() {
     	int i = 0;
     	for(Vehiculo vehiculo: vehiculos) {
@@ -54,9 +39,9 @@ public class Vehiculo implements Serializable {
 		}
     }
 
-
+     //Este metodo evalua si los documentos estal al dia
 	public Boolean estadoDocumentos() {
-		if  (placa.equals(null) || matricula == 0 )  {
+		if  (placa.equals(null) || matricula == 0 ||  asegurado == false )  {
 
 			return documentosAlDia = false;
 		}
