@@ -1,3 +1,8 @@
+/* Clase Persona marca los atributos de los cuales se heredara a las demas clases
+ *  del paquete gestionHumana
+ *  @Autor: Manuel Escobar
+ * */
+
 package gestionHumana;
 
 public abstract class Persona {
@@ -6,6 +11,9 @@ public abstract class Persona {
 	private String nombre;
 	private String genero;
 	private String telefono;
+	
+	//Metodo abstracto que debe implementarse en Cliente y Repartidor
+	abstract void registrar();
 	
 	public Persona(long id, String nombre, String genero, String telefono) {
         this.id = id;

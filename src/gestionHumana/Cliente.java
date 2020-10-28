@@ -1,9 +1,14 @@
+/* Clase Cliente tiene los atributos
+ * y metodos necesarios para registrar la informacion de los clientes
+ * @Autor: Manuel Escobar
+ * */
 package gestionHumana;
 import java.io.*;
 
 import java.util.LinkedList;
 
 public class Cliente extends Persona implements Serializable {
+	// Se implementa el atributo necesario apra la implementacion
 	private static final long serialVersionUID = 1L;
 	
 	private String direccion;
@@ -56,11 +61,14 @@ public class Cliente extends Persona implements Serializable {
         this.tarjeta = tarjeta;
     }
     
-	public static void agregarCliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
+    // Implementacion de metodo abstracto que permite agregar un nuevo usuario a la lista de clientes
+    // Recibe los argumentos necesarios apra crear un nuevo objeto de tipo Cliente
+	public static void registrar(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
 		clientes.add(new Cliente(direccion, metPago, tarjeta, id, nombre, genero, telefono));
 		System.out.println("Cliente creado con exito.");
 	}
 	
+	//Metodo que permite mostrar por consola la lista de clientes
 	public static void verClientes() {
 		int i = 0;
     	for(Cliente cliente: clientes) {
