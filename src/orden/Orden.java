@@ -206,49 +206,49 @@ public class Orden implements Serializable {
 	}
 	
 	
-	void setId(int i) {
+	public void setId(int i) {
 		this.id=i;
 	}
 	int getId() {
 		return this.id;
 	}
-	void setCliente(Cliente i) {
+	public void setCliente(Cliente i) {
 		this.cliente=i;
 	}
 	Cliente getCliente() {
 		return this.cliente;
 	}
-	void setSede(Sede i){
+	public void setSede(Sede i){
 	this.sede=i;
 	}
 	Sede getSede(){
 	return this.sede;
 	}
-	void setRepartidor(Repartidor i) {
+	public void setRepartidor(Repartidor i) {
 		this.repartidor=i;
 	}
 	Repartidor getRepartidor() {
 		return this.repartidor;
 	}
-	void setValor(int i) {
+	public void setValor(int i) {
 		this.valor=i;
 	}
 	int getValor() {
 		return this.valor;
 	}
-	void setCantProductos(int i) {
+	public void setCantProductos(int i) {
 		this.cantProductos=i;
 	}
 	int getCantProductos() {
 		return this.cantProductos;
 	}
-	void setPesoTotal(float i) {
+	public void setPesoTotal(float i) {
 		this.pesoTotal=i;
 	}
 	float getPesoTotal() {
 		return this.pesoTotal;
 	}
-	void setEstado(String s) {
+	public void setEstado(String s) {
 		this.estado=s;
 	}
 	String getEstado() {
@@ -259,14 +259,6 @@ public class Orden implements Serializable {
 	}
 	public static void adicionarOrden(Orden i) {
 		ordenes.add(i);
-	}
-	private static boolean isNumeric(String cadena){
-		try {
-			Integer.parseInt(cadena);
-			return true;
-		} catch (NumberFormatException nfe){
-			return false;
-		}
 	}
 	
 }
