@@ -47,16 +47,8 @@ public class Orden implements Serializable {
 		s.sumarVenta();
 		r.sumarPedido();
 		r.aceptarPedido();
-		/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
-		 * En caso de ser afirmativo, se le realiza un descuento de 10%
-		 */
-		if (c.getCantVentas() >=5) {
-			this.valor = (int) (valor*0.9);
-			System.out.println("Se ha realizado un descuento del 10% sobre el valor total");
-		}
-		else {
-			this.valor = valor;
-		}
+		
+		this.valor = c.descuento(valor);
 		ordenes.add(this);
 		System.out.println("\nOrden creada con exito.\n");
 		

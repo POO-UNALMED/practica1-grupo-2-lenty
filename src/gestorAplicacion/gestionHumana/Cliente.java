@@ -118,4 +118,18 @@ public class Cliente extends Persona implements Serializable {
 		this.cantVentas = cantVentas;
 	}
 	
+	/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
+	 * En caso de ser afirmativo, se le realiza un descuento de 10%
+	 */
+	public int descuento(int valor) {
+		int aux;
+		if (this.getCantVentas() >=5) {
+			aux = (int) (valor*0.9);
+			System.out.println("Se ha realizado un descuento del 10% sobre el valor total");
+		}
+		else {
+			aux = valor;
+		}
+		return aux;
+	}
 }
