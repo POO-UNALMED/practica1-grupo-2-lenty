@@ -1,20 +1,20 @@
-package interfaz;
+package uiMain;
 
 import java.util.*;
 
-import baseDatos.Escritor;
-import baseDatos.Lector;
-import gestionHumana.*;
-import orden.*;
-import sede.*;
-import vehiculo.*;
+import gestorAplicacion.baseDatos.Escritor;
+import gestorAplicacion.baseDatos.Lector;
+import gestorAplicacion.gestionHumana.*;
+import gestorAplicacion.orden.*;
+import gestorAplicacion.sede.*;
+import gestorAplicacion.vehiculo.*;
 
 public class Main {
 	static Scanner in = new Scanner(System.in);
 	static String op;
 	
 	public static void main(String[] args) {
-		System.out.println("_____Bienvenido_____");
+		System.out.println("_______Bienvenido_______");
 		Lector.Leer();
 		menuInicial();
 				
@@ -92,7 +92,7 @@ public class Main {
 				break;
 
 		}
-	}/*Menu orden es el metodo en la clase Main qu epermite modificar y tener acceso a Objetos de tipo Orden,
+	}/*Menu orden es el metodo en la clase Main que permite modificar y tener acceso a Objetos de tipo Orden,
 	Para ello, se despliega un menu que presenta las diferentes opciones dentro del mismo: ver las ordenes 
 	activas en el sistema, crear una nueva orden, modificar una orden en especifico, esta opcion despliega otro menu
 	donde hay que escoger cual orden se desea modificar y qué parametro de la misma, eliminar una ordenm donde se eliminara
@@ -163,23 +163,25 @@ public class Main {
 					r=Repartidor.repartidores.get(rep);
 					break;
 				}
+				else if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==false ) {
+					System.out.println("El repartidor no está disponible");
+				}
 				else {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
 			System.out.println("\nProductos\n");
 			Producto.verProductos();
-			System.out.println("Ingrese el producto que desea ordenar (Ingrese -1 para cerrar su eleccion)");
+			System.out.println("Ingrese los productos que desea ordenar separados por \"Enter\" (Ingrese -1 para cerrar su eleccion)");
 			while (true) {
-				rep = in.nextInt()-1;
-				if(rep>0 && rep<=Producto.getProductos().size()) {
+				rep = in.nextInt();
+				if(rep>=0 && rep<=Producto.getProductos().size()) {
 					p.add(Producto.getProductos().get(rep));
-					Producto.agregarVenta(Producto.getProductos().get(rep));
 				}
 				else if(rep>Producto.getProductos().size()) {
 					System.out.println("Ingrese un producto dentro de la lista");
 				}
-				else if(rep == -2) {
+				else if(rep == -1) {
 					break;
 				}
 			}
@@ -389,11 +391,11 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Clientes");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Ver Clientes \n2 - Agregar Cliente\n3 - Regresar";
+		String aux="1 - Ver Clientes \n2 - Agregar Cliente\n3 - Consultar cliente que mas ha comprado \n4 - Regresar";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
 				break;
 			}
 			else {
@@ -414,11 +416,20 @@ public class Main {
 				String nombre = in.next();
 				System.out.print("\nIngrese el telefono del Cliente: ");
 				String telefono = in.next();
-				System.out.print("\nIngrese el genero del Cliente: ");
-				String genero = in.next();
+				System.out.print("\nIngrese el genero del Cliente (M/F): ");
+				String genero = "";
+				while (true) {
+					genero = in.next();
+					if (genero.equals("M") || genero.equals("F")) {
+						break;
+					}
+					else {
+						System.out.println("Ingrese una opcion correcta, M para masculino y F para femenino");
+					}
+				}
 				System.out.print("\nIngrese la direccion del Cliente (Sin espacios): ");
 				String dir = in.next();
-				System.out.print("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
+				System.out.println("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
 				String pago = in.next();
 				String metPago;
 				long tarj;
@@ -435,6 +446,10 @@ public class Main {
 				break;
 				
 			case "3":
+				System.out.println(Cliente.clienteMayorVentas());
+				menuClientes();
+				break;
+			case "4":
 				menuUsuarios();
 				break;
 
@@ -445,11 +460,11 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Repartidores");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor \n3 - Regresar";
+		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor \n3 - Repartidor con mas pedido \n4 - Regresar";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
 				break;
 			}
 			else {
@@ -470,8 +485,17 @@ public class Main {
 				String nombre = in.next();
 				System.out.print("\nIngrese el telefono del Repartidor: ");
 				String telefono = in.next();
-				System.out.print("\nIngrese el genero del Repartidor: ");
-				String genero = in.next();
+				System.out.print("\nIngrese el genero del Repartidor(M/F): ");
+				String genero = "";
+				while (true) {
+					genero = in.next();
+					if (genero.equals("M") || genero.equals("F")) {
+						break;
+					}
+					else {
+						System.out.println("Ingrese una opcion correcta, M para masculino y F para femenino");
+					}
+				}
 				System.out.print("\nIngrese la entidad de salud del Repartidor: ");
 				String entSalud = in.next();
 				System.out.print("\nIngrese el salario del Repartidor: ");
@@ -481,16 +505,23 @@ public class Main {
 				break;
 
 			case "3":
+				System.out.println(Repartidor.repartidorMasPedidos());
+				menuRepartidores();
+				break;
+			case "4":
 				menuUsuarios();
 				break;
 
 		}
 	}
+	/*Menu productos es el metodo en la clase Main que permite modificar y tener acceso a Objetos de tipo Producto,
+	Permitiendo agregar productos, ver los productos con sus respectivas ventas, así como solo ver cual es el producto
+	Mas vendido en el momento*/
 	static void menuProductos() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Productos\n");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar productos mas vendidos \n4 - Regresar";
+		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar producto mas vendido \n4 - Regresar";
 		System.out.println(aux);
 		System.out.print("\nIngrese la opcion que desea: ");
 		while (true) {
@@ -521,7 +552,7 @@ public class Main {
 			break;
 			
 		case "3":
-			System.out.println(Producto.productoMasVendido());
+			System.out.println(Producto.productoMayorVentas());
 			menuProductos();
 			break;
 
@@ -561,7 +592,7 @@ public class Main {
 				String modelo = in.next();
 				System.out.println("Ingrese la matricula (Solo numeros)");
 				int matricula = in.nextInt();
-				System.out.println("Ingrese true si el vehiculo se encuentra aegurado o false en caso contrario");
+				System.out.println("Ingrese true si el vehiculo se encuentra asegurado o false en caso contrario");
 				boolean asegurado = in.nextBoolean();
 				Vehiculo vehiculo = new Vehiculo(placa, modelo, matricula, asegurado);
 				Vehiculo.adicionarVehiculo(vehiculo);
@@ -685,6 +716,7 @@ public class Main {
 				     	menuSedes();
 				break;
 				}
+				break;
 			case "4":
 				Sede.consultarSedes();
 				System.out.println("Ingrese el numero de la lista de la sede que desea Eliminar");
@@ -698,7 +730,7 @@ public class Main {
 				break;
 			case "6":
 				menuInicial();
-				
+				break;
 
 		}
 	}

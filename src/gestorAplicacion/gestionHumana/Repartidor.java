@@ -2,12 +2,13 @@
  * y metodos necesarios para registrar la informacion de los repartidores
  * @Autor: Manuel Escobar
  * */
-package gestionHumana;
+package gestorAplicacion.gestionHumana;
 import java.util.Iterator;
 import java.io.*;
 import java.util.LinkedList;
 
-import vehiculo.*;
+import gestorAplicacion.sede.Sede;
+import gestorAplicacion.vehiculo.*;
 
 
 public class Repartidor extends Persona implements Serializable {
@@ -18,8 +19,7 @@ public class Repartidor extends Persona implements Serializable {
     private int salario;
     public boolean disponibilidad;
     public static LinkedList <Repartidor> repartidores = new LinkedList<Repartidor>();
-    int sumCalificaciones;
-    int numCalificaciones;
+    private int cantPedidos;
     
     
     public Repartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
@@ -64,12 +64,6 @@ public class Repartidor extends Persona implements Serializable {
     	vehiculo.setRepartidor(null);
         vehiculo = null;    	
     }
-    public void calificarRepartidor(int calificacion) {
-    	if(0 <= calificacion && calificacion <= 5 ) {
-    		sumCalificaciones+= calificacion;
-    		numCalificaciones++;
-    	}
-    }
 
     public String getEntSalud() {
         return entSalud;
@@ -106,7 +100,7 @@ public class Repartidor extends Persona implements Serializable {
 	public static void verRepartidores() {
 		int i = 0;
     	for(Repartidor repartidor: repartidores) {
-	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario());
+	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario()+"\n Ha realizado "+repartidor.cantPedidos+" pedidos\n");
 	    	i++;
 		}
 	}
@@ -118,5 +112,30 @@ public class Repartidor extends Persona implements Serializable {
 	public static void adicionarRepartidor(Repartidor repartidor) {
 		repartidores.add(repartidor);
 	}
+
+	public static Repartidor repartidorMasPedidos() {
+		int aux = 0;
+		Repartidor p = null;
+		for (Repartidor r : repartidores) {
+			if (r.cantPedidos>aux) {
+				aux = r.cantPedidos;
+				p = r;
+			}
+		}
+		return p;
+	}
+	
+	public void sumarPedido() {
+		this.cantPedidos++;
+	}
+	
+	
+	public String toString() {
+		return "Documento:"+this.getId()+"\n Nombre:"+this.getNombre()+"\n Telefono:"+this.getTelefono()+"\n ¿Disponible?"+this.isDisponibilidad()+"\n Ha realizado "+this.cantPedidos+" pedidos\n";
+	}
+	void registrar(){
+		
+	}
+
     
 }

@@ -1,8 +1,8 @@
 /*Esta clase fue elabarada por Camilo, su finalidad es registrar todas las sedes de ventas*/
-package sede;
+package gestorAplicacion.sede;
 import java.util.*;
 
-import vehiculo.Vehiculo;
+import gestorAplicacion.vehiculo.Vehiculo;
 
 import java.io.*;
 public class Sede implements Serializable {
@@ -27,7 +27,7 @@ public class Sede implements Serializable {
     	int i = 0;
     	for(Sede sede: sedes) {
 
-    	System.out.println(i+"- Direccion:"+ sede.direccion+" \nTelefono:"+sede.telefono+" \nVentas:"+sede.cantVentas + "\n\n");
+    	System.out.println(i+"- Direccion: "+ sede.direccion+" \nTelefono: "+sede.telefono+" \nVentas: "+sede.cantVentas + "\n\n");
 
     	i++;
 		}
@@ -36,12 +36,11 @@ public class Sede implements Serializable {
 	//Devuelve cual de todas las sedes ha tenido el mayor numero de ventas
 	public static Sede sedeMayorVentas() {
 		long aux = 0;
-		int contador = 0;
 		Sede p = null;
 		for (Sede sede : sedes) {
 			if (sede.cantVentas>aux) {
 				aux = sede.cantVentas;
-				p = sedes.get(contador);
+				p = sede;
 			}
 		}
 		return p;
@@ -71,5 +70,8 @@ public class Sede implements Serializable {
 		this.cantVentas++;
 	}
 	
+	public String toString() {
+		return ("Direccion: "+ this.direccion+" \nTelefono: "+this.telefono+" \nVentas: "+ this.cantVentas + "\n");
+	}
 	
 }

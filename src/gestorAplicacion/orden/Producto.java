@@ -1,7 +1,12 @@
-package orden;
+/* Clase Producto tiene los atributos
+ * y metodos necesarios para registrar, almacenar y administrar los productos que son ofrecidos al cliente
+ * @Autor: Michael Zapata
+ * */
+
+package gestorAplicacion.orden;
 import java.util.*;
-import gestionHumana.*;
-import sede.Sede;
+import gestorAplicacion.gestionHumana.*;
+import gestorAplicacion.sede.Sede;
 import java.io.*;
 public class Producto implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -9,7 +14,7 @@ public class Producto implements Serializable{
 	private String descripcion;
 	private long precio;
 	private static LinkedList<Producto> productos = new LinkedList<>();
-	private static LinkedList<Producto> ventas = new LinkedList<>();
+	private int cantVentas;
 	Producto(String nom,String des,long pre){
 		this.nombre=nom;
 		this.descripcion=des;
@@ -17,20 +22,18 @@ public class Producto implements Serializable{
 		this.adicionarProducto(this);
 	}
 	
-	
-	public static Producto productoMasVendido() {
+	//Metodo para saber cual es el producto que mas se vende.
+	public static Producto productoMayorVentas() {
 		int aux = 0;
 		Producto p = null;
-		for (int i=0;i<ventas.size();i++) {
-			if (Collections.frequency(ventas, ventas.get(i))>aux) {
-				aux = Collections.frequency(ventas, ventas.get(i));
-				p = ventas.get(i);
+		for (Producto pr : productos) {
+			if (pr.cantVentas>aux) {
+				aux = pr.cantVentas;
+				p = pr;
 			}
 		}
 		return p;
 	}
-	
-	
 	
 	void setNombre(String i) {
 		this.nombre=i;
@@ -58,31 +61,21 @@ public class Producto implements Serializable{
 	}
 	public static void verProductos() {
 		for (int i = 0; i<productos.size();i++) {
-			System.out.println("\nProducto "+ (i+1));
+			System.out.println("\nProducto "+ (i));
 			System.out.println(productos.get(i));
 		}
 	}
 
 	public String toString() {
-		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio;
+		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio + ", Se ha vendido " + this.cantVentas + " veces";
 	}
 	public static void adicionarProducto(Producto p) {
 		productos.add(p);
   }
 	
-	public static void agregarVenta(Producto p) {
-		ventas.add(p);
-	}
+	
 
 
-	int getCantidad() {
-		return cantidad;
-	}
-
-
-	void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
 
 	public static LinkedList<Producto> getProductos() {
 		return productos;
@@ -95,12 +88,8 @@ public class Producto implements Serializable{
 
 
 
-	static LinkedList<Producto> getVentas() {
-		return ventas;
-	}
-
-	static void setVentas(LinkedList<Producto> ventas) {
-		Producto.ventas = ventas;
+	public void sumarVenta() {
+		this.cantVentas++;
 	}
 	
 	

@@ -1,10 +1,9 @@
-package orden;
+package gestorAplicacion.orden;
 import java.io.Serializable;
 import java.util.*;
-import interfaz.Main;
-import sede.*;
-import vehiculo.Vehiculo;
-import gestionHumana.*;
+import gestorAplicacion.sede.*;
+import gestorAplicacion.vehiculo.Vehiculo;
+import gestorAplicacion.gestionHumana.*;
 public class Orden implements Serializable {
 	/*La clase orden fue realizada por Danilo, es la estructura principal del sistema de envios, ya que almacena y manipula objetos con las caracteristicas
 	Necesarias para tener claridad en cuento a lo que se estaría enviando, cuenta con los parametros necesarios para su identificacion y manipulacion,
@@ -37,12 +36,19 @@ public class Orden implements Serializable {
 		this.sede=s;
 		this.repartidor=r;
 		this.valor=valor;
-		productos = p;
+		setProductos(p);
 		this.cantProductos=p.size();
 		this.pesoTotal=peso;
 		this.estado=es;
+		for(Producto pr : p) {
+			pr.sumarVenta();
+		}
+		c.sumarVenta();
 		s.sumarVenta();
+		r.sumarPedido();
+		r.aceptarPedido();
 		ordenes.add(this);
+		
 	}
 	static public void consultarOrdenesActivas() {
     	int i = 0;
@@ -54,7 +60,9 @@ public class Orden implements Serializable {
     	}
 	}
 	public static void cancelarOrden(int i) {
+		ordenes.get(i).repartidor.terminarPedido();
 		ordenes.remove(i);
+		
 	}
 	public void aceptarOrden() {
 		this.estado = "Aceptada";
@@ -66,6 +74,7 @@ public class Orden implements Serializable {
 	}
 	public void ordenEntregada() {
 		this.estado = "Entregada";
+		this.getRepartidor().terminarPedido();
 		System.out.println("La orden fue entregada con exito");
 		
 	}
@@ -135,6 +144,12 @@ public class Orden implements Serializable {
     			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" Dirección sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
     		i++;
     	}
+	}
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 	
 }

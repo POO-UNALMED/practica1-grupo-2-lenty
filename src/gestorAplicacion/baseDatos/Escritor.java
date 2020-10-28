@@ -1,16 +1,16 @@
 /*La base de datos fue diseñada por Camilo y implementada en cada clase segun su respectivo usario, la funcion de este modulo es escribir la información en los archivos txt 
  * de las listas de objetos de cada clase
  */
-package baseDatos;
+package gestorAplicacion.baseDatos;
 import java.io.*;
 
 
-import gestionHumana.*;
-import orden.Orden;
-import orden.Producto;
+import gestorAplicacion.gestionHumana.*;
+import gestorAplicacion.orden.Orden;
+import gestorAplicacion.orden.Producto;
 
-import sede.Sede;
-import vehiculo.*;
+import gestorAplicacion.sede.Sede;
+import gestorAplicacion.vehiculo.*;
 
 public class Escritor {
 
@@ -19,7 +19,7 @@ public class Escritor {
 	/*Este metodo se ejecuta al cerrar el programa para guardar la base de datos de objetos de cada respectiva clase*/
 	public static void Escribir() {
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\vehiculos.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer((Vehiculo.getVehiculos()).size()));
@@ -33,7 +33,7 @@ public class Escritor {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\sedes.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\sedes.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer((Sede.getSede()).size()));
@@ -47,7 +47,7 @@ public class Escritor {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\clientes.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\clientes.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer((Cliente.getClientes()).size()));
@@ -61,7 +61,7 @@ public class Escritor {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\repartidores.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer((Repartidor.getRepartidores()).size()));
@@ -75,7 +75,7 @@ public class Escritor {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\ordenes.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\ordenes.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer(Orden.getOrdenes().size()));
@@ -89,7 +89,7 @@ public class Escritor {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\productos.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
 			objectOutputStream.writeInt(new Integer((Producto.getProductos()).size()));

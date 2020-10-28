@@ -2,10 +2,12 @@
  * y metodos necesarios para registrar la informacion de los clientes
  * @Autor: Manuel Escobar
  * */
-package gestionHumana;
+package gestorAplicacion.gestionHumana;
 import java.io.*;
 
 import java.util.LinkedList;
+
+import gestorAplicacion.sede.Sede;
 
 public class Cliente extends Persona implements Serializable {
 	// Se implementa el atributo necesario apra la implementacion
@@ -14,8 +16,8 @@ public class Cliente extends Persona implements Serializable {
 	private String direccion;
 	private String metPago;
 	private long tarjeta;
+	private int cantVentas;
 	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
-	private int compras;
 	
 	public Cliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
@@ -72,7 +74,7 @@ public class Cliente extends Persona implements Serializable {
 	public static void verClientes() {
 		int i = 0;
     	for(Cliente cliente: clientes) {
-	    	System.out.println(i+"- Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion());
+	    	System.out.println(i+" - Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion() +"\n Ha comprado "+cliente.cantVentas+" veces\n");
 	    	i++;
 		}
 	}
@@ -83,5 +85,28 @@ public class Cliente extends Persona implements Serializable {
 	
 	public static void adicionarCliente(Cliente cliente) {
 		clientes.add(cliente);
+	}
+	void registrar() {
+		
+		
+	}
+	/*Metodo que permite conocer cual es el cliente que mas ha comprado*/
+	public static Cliente clienteMayorVentas() {
+		int aux = 0;
+		Cliente p = null;
+		for (Cliente c : clientes) {
+			if (c.cantVentas>aux) {
+				aux = c.cantVentas;
+				p = c;
+			}
+		}
+		return p;
+	}
+	public void sumarVenta() {
+		this.cantVentas++;
+	}
+
+	public String toString() {
+		return "Documento:"+this.getId()+"\n Nombre:"+this.getNombre()+"\n Telefono:"+this.getTelefono()+"\n Metodo Pago: "+this.getMetPago()+"\n Direccion:"+this.getDireccion() +"\n Ha comprado "+this.cantVentas+" veces\n";
 	}
 }
