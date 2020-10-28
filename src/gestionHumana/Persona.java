@@ -1,6 +1,6 @@
 package gestionHumana;
 
-public class Persona {
+public abstract class Persona {
 	
 	private long id;
 	private String nombre;

@@ -1,11 +1,10 @@
 package gestionHumana;
+import java.io.*;
 
 import java.util.LinkedList;
 
-import orden.Producto;
-import sede.Sede;
-
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String direccion;
 	private String metPago;
@@ -62,9 +61,10 @@ public class Cliente extends Persona {
 	}
 	
 	public static void verClientes() {
-		for (int i = 0; i < clientes.size(); i++) {
-			System.out.println("\nCliente "+ (i+1));
-			System.out.println(clientes.get(i));
+		int i = 0;
+    	for(Cliente cliente: clientes) {
+	    	System.out.println(i+"- Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion());
+	    	i++;
 		}
 	}
 	
@@ -75,12 +75,4 @@ public class Cliente extends Persona {
 	public static void adicionarCliente(Cliente cliente) {
 		clientes.add(cliente);
 	}
-    
-    public void crearOrden(){
-        
-    }
-    
-    public void pagar() {
-        
-    }
 }
