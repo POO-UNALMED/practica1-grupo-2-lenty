@@ -1,3 +1,7 @@
+/* Clase Repartidor tiene los atributos
+ * y metodos necesarios para registrar la informacion de los repartidores
+ * @Autor: Manuel Escobar
+ * */
 package gestionHumana;
 import java.util.Iterator;
 import java.io.*;
@@ -91,11 +95,14 @@ public class Repartidor extends Persona implements Serializable {
         this.disponibilidad = disponibilidad;
     }
      
-    public static void agregarRepartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
+    // Implementacion de metodo abstracto que permite agregar un nuevo repartidor a la lista de repartidores
+    // Recibe los argumentos necesarios apra crear un nuevo objeto de tipo Repartidor
+    public static void registrar(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
 		repartidores.add(new Repartidor(entSalud, salario, disponibilidad, id, nombre, genero, telefono));
 		System.out.println("Repartidor creado con exito.");
 	}
 	
+    //Metodo que permite mostrar por consola la lista de repartidores
 	public static void verRepartidores() {
 		int i = 0;
     	for(Repartidor repartidor: repartidores) {

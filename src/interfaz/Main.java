@@ -430,7 +430,7 @@ public class Main {
 					System.out.print("\nIngrese el numero de tarjeta del Cliente: ");
 					tarj = in.nextLong();
 				}
-				Cliente.agregarCliente(dir, metPago, tarj, id, nombre, genero, telefono);
+				Cliente.registrar(dir, metPago, tarj, id, nombre, genero, telefono);
 				menuClientes();
 				break;
 				
@@ -476,7 +476,7 @@ public class Main {
 				String entSalud = in.next();
 				System.out.print("\nIngrese el salario del Repartidor: ");
 				int salario = in.nextInt();
-				Repartidor.agregarRepartidor(entSalud, salario, true, id, nombre, genero, telefono);
+				Repartidor.registrar(entSalud, salario, true, id, nombre, genero, telefono);
 				menuRepartidores();
 				break;
 
