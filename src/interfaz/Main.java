@@ -143,7 +143,7 @@ public class Main {
 			while(true) {
 				sed=in.nextInt();
 				if(sed==-1) {
-					//Falta mostrar las sedes
+					Sede.consultarSedes();
 					System.out.println("Ingrese el indice de la sede de la orden:");
 				}
 				else if(sed>=0 && sed<Sede.getSede().size()) {
@@ -199,6 +199,7 @@ public class Main {
 				int u=in.nextInt();
 				if(u==-1) {
 					Orden.consultarOrdenesActivas();
+					System.out.println("Ingrese el indice de la orden que desea eliminar");
 				}
 				else if(u>=0 && u<Orden.getOrdenes().size()) {
 					Orden.cancelarOrden(u);

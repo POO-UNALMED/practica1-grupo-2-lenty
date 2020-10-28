@@ -75,16 +75,61 @@ public class Orden {
 				}
 			}
 		case "2":
-			//Seleccionar un nuevo cliente para la orden, luego cambiar el anterior por este.
-			break;
+			System.out.println("Ingrese el indice del cliente nuevo de la orden, si lo desconoce, ingrese -1");
+			while(true) {
+				int cli=in.nextInt();
+				if(cli==-1) {
+					Cliente.verClientes();
+					System.out.println("Ingrese el indice del cliente de la orden");
+				}
+				else if(cli>=0 && cli<Cliente.getClientes().size()) {
+					this.setCliente(Cliente.getClientes().get(cli));;
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
+			}
+			System.out.println("Cambio realizado, siga modificando \n");
+			this.modificarOrden();
 			
 		case "3":
-			//Seleccionar una nueva Sede para la orden
-			break;
+			System.out.println("Ingrese el indice de la sede nueva de la orden, si lo desconoce, ingrese -1 ");
+			while(true) {
+				int sed=in.nextInt();
+				if(sed==-1) {
+					Sede.consultarSedes();
+					System.out.println("Ingrese el indice de la sede de la orden:");
+				}
+				else if(sed>=0 && sed<Sede.getSede().size()) {
+					this.setSede(Sede.getSede().get(sed));
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
+			}
+			System.out.println("Cambio realizado, siga modificando \n");
+			this.modificarOrden();
 			
 		case "4":
-			//Asignar un nuevo repartidor a la orden
-			break;
+			System.out.println("Ingrese el indice del repartidor nuevo de la orden, si lo desconoce, ingrese -1  ");
+			while(true) {
+				int rep=in.nextInt();
+				if(rep==-1) {
+					Repartidor.verRepartidores();;
+					System.out.println("Ingrese el indice del nuevo repartidor de la orden:");
+				}
+				else if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==true ) {
+					this.setRepartidor(Repartidor.getRepartidores().get(rep));
+					break;
+				}
+				else {
+					System.out.println("Ingrese un indice valido");
+				}
+			}
+			System.out.println("Cambio realizado, siga modificando \n");
+			this.modificarOrden();
 			
 		case "5":
 			System.out.println("Ingrese un nuevo valor de la orden :");
@@ -141,7 +186,7 @@ public class Orden {
 		}
 	}
 	public void aceptarOrden() {
-		this.estado = "En proceso";
+		this.estado = "Aceptada";
 		System.out.println("La orden fue aceptada con exito");
 		
 	}
