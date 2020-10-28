@@ -100,7 +100,7 @@ public class Repartidor extends Persona implements Serializable {
 	public static void verRepartidores() {
 		int i = 0;
     	for(Repartidor repartidor: repartidores) {
-	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario()+"\n");
+	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario()+"\n Ha realizado "+repartidor.cantPedidos+" pedidos\n");
 	    	i++;
 		}
 	}

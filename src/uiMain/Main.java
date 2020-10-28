@@ -172,7 +172,7 @@ public class Main {
 			}
 			System.out.println("\nProductos\n");
 			Producto.verProductos();
-			System.out.println("Ingrese el producto que desea ordenar (Ingrese -1 para cerrar su eleccion)");
+			System.out.println("Ingrese los productos que desea ordenar separados por \"Enter\" (Ingrese -1 para cerrar su eleccion)");
 			while (true) {
 				rep = in.nextInt();
 				if(rep>=0 && rep<=Producto.getProductos().size()) {
