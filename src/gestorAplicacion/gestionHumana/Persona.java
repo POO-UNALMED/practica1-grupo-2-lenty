@@ -3,14 +3,19 @@
  *  @Autor: Manuel Escobar
  * */
 
-package gestionHumana;
+package gestorAplicacion.gestionHumana;
+import java.io.Serializable;
+import java.util.LinkedList;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable{
+	// Se implementa el atributo necesario apra la implementacion
+	private static final long serialVersionUID = 1L;
 	
 	private long id;
 	private String nombre;
 	private String genero;
 	private String telefono;
+	private static LinkedList<Persona> personas = new LinkedList<>();
 	
 	//Metodo abstracto que debe implementarse en Cliente y Repartidor
 	abstract void registrar();
@@ -29,7 +34,6 @@ public abstract class Persona {
     }
     
     public Persona() {
-        this(00, "Prueba", "123456");
     }
 	
 	public long getId() {
@@ -63,5 +67,10 @@ public abstract class Persona {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+	public static void adicionarPersona(Persona persona) {
+		Persona.personas.add(persona);
+		
+	}
 	
 }

@@ -2,12 +2,12 @@
  * y metodos necesarios para registrar la informacion de los repartidores
  * @Autor: Manuel Escobar
  * */
-package gestionHumana;
+package gestorAplicacion.gestionHumana;
 import java.util.Iterator;
 import java.io.*;
 import java.util.LinkedList;
 
-import vehiculo.*;
+import gestorAplicacion.vehiculo.*;
 
 
 public class Repartidor extends Persona implements Serializable {
@@ -106,7 +106,7 @@ public class Repartidor extends Persona implements Serializable {
 	public static void verRepartidores() {
 		int i = 0;
     	for(Repartidor repartidor: repartidores) {
-	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario());
+	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario()+"\n");
 	    	i++;
 		}
 	}
@@ -118,5 +118,10 @@ public class Repartidor extends Persona implements Serializable {
 	public static void adicionarRepartidor(Repartidor repartidor) {
 		repartidores.add(repartidor);
 	}
+
+	void registrar(){
+		
+	}
+
     
 }

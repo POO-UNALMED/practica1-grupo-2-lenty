@@ -1,20 +1,20 @@
-package interfaz;
+package uiMain;
 
 import java.util.*;
 
-import baseDatos.Escritor;
-import baseDatos.Lector;
-import gestionHumana.*;
-import orden.*;
-import sede.*;
-import vehiculo.*;
+import gestorAplicacion.baseDatos.Escritor;
+import gestorAplicacion.baseDatos.Lector;
+import gestorAplicacion.gestionHumana.*;
+import gestorAplicacion.orden.*;
+import gestorAplicacion.sede.*;
+import gestorAplicacion.vehiculo.*;
 
 public class Main {
 	static Scanner in = new Scanner(System.in);
 	static String op;
 	
 	public static void main(String[] args) {
-		System.out.println("_____Bienvenido_____");
+		System.out.println("_______Bienvenido_______");
 		Lector.Leer();
 		menuInicial();
 				
@@ -92,7 +92,7 @@ public class Main {
 				break;
 
 		}
-	}/*Menu orden es el metodo en la clase Main qu epermite modificar y tener acceso a Objetos de tipo Orden,
+	}/*Menu orden es el metodo en la clase Main que permite modificar y tener acceso a Objetos de tipo Orden,
 	Para ello, se despliega un menu que presenta las diferentes opciones dentro del mismo: ver las ordenes 
 	activas en el sistema, crear una nueva orden, modificar una orden en especifico, esta opcion despliega otro menu
 	donde hay que escoger cual orden se desea modificar y qué parametro de la misma, eliminar una ordenm donde se eliminara
@@ -162,6 +162,9 @@ public class Main {
 				if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==true ) {
 					r=Repartidor.repartidores.get(rep);
 					break;
+				}
+				else if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==false ) {
+					System.out.println("El repartidor no está disponible");
 				}
 				else {
 					System.out.println("Ingrese un indice valido");
@@ -415,10 +418,19 @@ public class Main {
 				System.out.print("\nIngrese el telefono del Cliente: ");
 				String telefono = in.next();
 				System.out.print("\nIngrese el genero del Cliente: ");
-				String genero = in.next();
+				String genero = "";
+				while (true) {
+					genero = in.next();
+					if (genero.equals("M") || genero.equals("F")) {
+						break;
+					}
+					else {
+						System.out.println("Ingrese una opcion correcta, M para masculino y F para femenino");
+					}
+				}
 				System.out.print("\nIngrese la direccion del Cliente (Sin espacios): ");
 				String dir = in.next();
-				System.out.print("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
+				System.out.println("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
 				String pago = in.next();
 				String metPago;
 				long tarj;
@@ -470,8 +482,17 @@ public class Main {
 				String nombre = in.next();
 				System.out.print("\nIngrese el telefono del Repartidor: ");
 				String telefono = in.next();
-				System.out.print("\nIngrese el genero del Repartidor: ");
-				String genero = in.next();
+				System.out.print("\nIngrese el genero del Repartidor(M/F): ");
+				String genero = "";
+				while (true) {
+					genero = in.next();
+					if (genero.equals("M") || genero.equals("F")) {
+						break;
+					}
+					else {
+						System.out.println("Ingrese una opcion correcta, M para masculino y F para femenino");
+					}
+				}
 				System.out.print("\nIngrese la entidad de salud del Repartidor: ");
 				String entSalud = in.next();
 				System.out.print("\nIngrese el salario del Repartidor: ");
@@ -561,7 +582,7 @@ public class Main {
 				String modelo = in.next();
 				System.out.println("Ingrese la matricula (Solo numeros)");
 				int matricula = in.nextInt();
-				System.out.println("Ingrese true si el vehiculo se encuentra aegurado o false en caso contrario");
+				System.out.println("Ingrese true si el vehiculo se encuentra asegurado o false en caso contrario");
 				boolean asegurado = in.nextBoolean();
 				Vehiculo vehiculo = new Vehiculo(placa, modelo, matricula, asegurado);
 				Vehiculo.adicionarVehiculo(vehiculo);
@@ -685,6 +706,7 @@ public class Main {
 				     	menuSedes();
 				break;
 				}
+				break;
 			case "4":
 				Sede.consultarSedes();
 				System.out.println("Ingrese el numero de la lista de la sede que desea Eliminar");
@@ -698,7 +720,7 @@ public class Main {
 				break;
 			case "6":
 				menuInicial();
-				
+				break;
 
 		}
 	}

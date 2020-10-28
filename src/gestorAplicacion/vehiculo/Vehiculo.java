@@ -1,8 +1,8 @@
 /*Esta clase fue realiza por Camilo; su objetivo es describir cada vehiculo que puede tener los repartidores*/
-package vehiculo;
+package gestorAplicacion.vehiculo;
 import java.io.*;
 import java.util.*;
-import gestionHumana.*;
+import gestorAplicacion.gestionHumana.*;
 
 public class Vehiculo implements Serializable {
 	/*En esta clase se guardan los vehiculos con sus atributos y en base a los atributos se determina si los objetos estan al dia, todos los objetos son guardados en una lista

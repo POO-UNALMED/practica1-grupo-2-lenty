@@ -1,7 +1,7 @@
-package orden;
+package gestorAplicacion.orden;
 import java.util.*;
-import gestionHumana.*;
-import sede.Sede;
+import gestorAplicacion.gestionHumana.*;
+import gestorAplicacion.sede.Sede;
 import java.io.*;
 public class Producto implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -19,7 +19,7 @@ public class Producto implements Serializable{
 	
 	
 	public static Producto productoMasVendido() {
-		int aux = 0;
+		int aux = -1;
 		Producto p = null;
 		for (int i=0;i<ventas.size();i++) {
 			if (Collections.frequency(ventas, ventas.get(i))>aux) {
@@ -29,8 +29,6 @@ public class Producto implements Serializable{
 		}
 		return p;
 	}
-	
-	
 	
 	void setNombre(String i) {
 		this.nombre=i;
@@ -75,14 +73,6 @@ public class Producto implements Serializable{
 	}
 
 
-	int getCantidad() {
-		return cantidad;
-	}
-
-
-	void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
 
 	public static LinkedList<Producto> getProductos() {
 		return productos;
@@ -95,7 +85,7 @@ public class Producto implements Serializable{
 
 
 
-	static LinkedList<Producto> getVentas() {
+	public static LinkedList<Producto> getVentas() {
 		return ventas;
 	}
 
