@@ -2,6 +2,11 @@ package baseDatos;
 import java.io.*;
 
 import vehiculo.Vehiculo;
+<<<<<<< Updated upstream
+=======
+import orden.Orden;
+import orden.Producto;
+>>>>>>> Stashed changes
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
@@ -45,6 +50,83 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+<<<<<<< Updated upstream
+=======
+		// Repartidores
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numRepartidores = objectInputStream.readInt();
+			Repartidor repartidor;
+			for (int i =1; i <= numRepartidores; i++ ) {
+				repartidor = (Repartidor) objectInputStream.readObject();
+				Repartidor.adicionarRepartidor(repartidor);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		// Clientes
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\clientes.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numClientes = objectInputStream.readInt();
+			Cliente cliente;
+			for (int i =1; i <= numClientes; i++ ) {
+				cliente = (Cliente) objectInputStream.readObject();
+				Cliente.adicionarCliente(cliente);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\ordenes.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numOrdenes = objectInputStream.readInt();
+			Orden orden;
+			for (int i =1; i <= numOrdenes; i++ ) {
+				orden = (Orden) objectInputStream.readObject();
+				Orden.adicionarOrden(orden);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numProductos = objectInputStream.readInt();
+			Producto producto;
+			for (int i =1; i<=numProductos; i++ ) {
+				producto = (Producto) objectInputStream.readObject();
+				Vehiculo.adicionarProducto(producto);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+>>>>>>> Stashed changes
 	}
 	
 	
