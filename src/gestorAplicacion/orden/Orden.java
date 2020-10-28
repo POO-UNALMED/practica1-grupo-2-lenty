@@ -47,6 +47,7 @@ public class Orden implements Serializable {
 		s.sumarVenta();
 		r.sumarPedido();
 		r.aceptarPedido();
+		this.valor = descuento(c, valor);
 		ordenes.add(this);
 		System.out.println("\nOrden creada con exito.\n");
 		
