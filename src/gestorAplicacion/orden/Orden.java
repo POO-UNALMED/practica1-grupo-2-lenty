@@ -52,11 +52,13 @@ public class Orden implements Serializable {
 		 */
 		if (c.getCantVentas() >=5) {
 			this.valor = (int) (valor*0.9);
+			System.out.println("Se ha realizado un descuento del 10% sobre el valor total");
 		}
 		else {
 			this.valor = valor;
 		}
 		ordenes.add(this);
+		System.out.println("\nOrden creada con exito.\n");
 		
 	}
 	static public void consultarOrdenesActivas() {

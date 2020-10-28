@@ -20,7 +20,7 @@ public class Repartidor extends Persona implements Serializable {
     public boolean disponibilidad;
     public static LinkedList <Repartidor> repartidores = new LinkedList<Repartidor>();
     private int cantPedidos;
-    
+    private int aumento = 0;
     
     public Repartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
@@ -129,6 +129,8 @@ public class Repartidor extends Persona implements Serializable {
 	public void sumarPedido() {
 		this.cantPedidos++;
 		if(this.cantPedidos >= 5) {
+			this.aumento+=2000;
+			System.out.println("Es el pedido numero " + this.cantPedidos +" de "+ this.getNombre() + ", ha generado un aumento de " + this.aumento);
 			this.salario+=2000;
 		}
 	}
