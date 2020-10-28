@@ -18,6 +18,7 @@ public class Orden implements Serializable {
 	cancelarlas, consultar las ordenes dentro de la base de datos, rechazar la orden. */
 	private static final long serialVersionUID = 1L;	
 	private static LinkedList<Orden> ordenes = new LinkedList<Orden>();
+	private static int idG = 0;
 	private int id;
 	private Cliente cliente;
 	private Sede sede;
@@ -29,26 +30,29 @@ public class Orden implements Serializable {
 	private List<Producto> productos= new ArrayList<>();
 	private float pesoTotal;
 	public String estado;
-	public Orden(int id,Cliente c,Sede s,Repartidor r,int valor,int cantP,float peso,String es) {
-		this.id=id;
+	public Orden(Cliente c,Sede s,Repartidor r,int valor,List<Producto> p,float peso,String es) {
+		idG++;
+		this.id=idG;
 		this.cliente=c;
 		this.sede=s;
 		this.repartidor=r;
 		this.valor=valor;
-		this.cantProductos=cantP;
+		productos = p;
+		this.cantProductos=p.size();
 		this.pesoTotal=peso;
 		this.estado=es;
+		s.sumarVenta();
 		ordenes.add(this);
 	}
 	static public void consultarOrdenesActivas() {
     	int i = 0;
     	for(Orden orden: ordenes) {
-    		if(orden.getEstado().equals("Activa") || orden.getEstado().equals("Aceptada")) {
-    			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" Dirección sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
+    		if(true) {
+    			System.out.println(i+"- ID: "+orden.getId()+" \nCliente: "+orden.getCliente().getNombre()+" \nDirección sede: "+orden.getSede().getDireccion()+" \nRepartidor: "+orden.getRepartidor().getNombre()+" \nValor: "+orden.getValor()+" \nCantidad de productos: "+orden.getCantProductos()+" \nPeso total: "+orden.getPesoTotal()+" \nEstado: "+orden.getEstado()+"\n\n");
     		}
     		i++;
     	}
-    }
+	}
 	public static void cancelarOrden(int i) {
 		ordenes.remove(i);
 	}

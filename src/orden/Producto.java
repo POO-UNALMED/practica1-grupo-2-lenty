@@ -46,15 +46,13 @@ public class Producto {
 	void setPrecio(long i) {
 		this.precio=i;
 	}
-	long getPrecio() {
+	public long getPrecio() {
 		return this.precio;
 	}
 	
-	public static void agregarProducto(String nom,String des,long pre,int can) {
-		for (int i = 0; i < can; i++) {	
-			productos.add(new Producto(nom, des, pre));
-		}
-		System.out.println("Producto creado con exito.");
+	public static void agregarProducto(String nom,String des,long pre) {
+		Producto p = (new Producto(nom, des, pre));
+		System.out.println("\nProducto creado con exito.");
 	}
 	public static void verProductos() {
 		for (int i = 0; i<productos.size();i++) {
@@ -69,4 +67,40 @@ public class Producto {
 	public void adicionarProducto(Producto p) {
 		productos.add(this);
 	}
+	
+	public static void agregarVenta(Producto p) {
+		ventas.add(p);
+	}
+
+
+	int getCantidad() {
+		return cantidad;
+	}
+
+
+	void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+	public static ArrayList<Producto> getProductos() {
+		return productos;
+	}
+
+
+	static void setProductos(ArrayList<Producto> productos) {
+		Producto.productos = productos;
+	}
+
+
+	static ArrayList<Producto> getVentas() {
+		return ventas;
+	}
+
+
+	static void setVentas(ArrayList<Producto> ventas) {
+		Producto.ventas = ventas;
+	}
+	
+	
 }
