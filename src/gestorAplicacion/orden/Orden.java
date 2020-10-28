@@ -35,7 +35,7 @@ public class Orden implements Serializable {
 		this.cliente=c;
 		this.sede=s;
 		this.repartidor=r;
-		this.valor=valor;
+		
 		setProductos(p);
 		this.cantProductos=p.size();
 		this.pesoTotal=peso;
@@ -47,6 +47,15 @@ public class Orden implements Serializable {
 		s.sumarVenta();
 		r.sumarPedido();
 		r.aceptarPedido();
+		/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
+		 * En caso de ser afirmativo, se le realiza un descuento de 10%
+		 */
+		if (c.getCantVentas() >=5) {
+			this.valor = (int) (valor*0.9);
+		}
+		else {
+			this.valor = valor;
+		}
 		ordenes.add(this);
 		
 	}
