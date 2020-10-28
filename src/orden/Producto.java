@@ -2,13 +2,14 @@ package orden;
 import java.util.*;
 import gestionHumana.*;
 import sede.Sede;
-public class Producto {
+import java.io.*;
+public class Producto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String descripcion;
 	private long precio;
-	private int cantidad;
-	private static ArrayList<Producto> productos = new ArrayList<>();
-	private static ArrayList<Producto> ventas = new ArrayList<>();
+	private static LinkedList<Producto> productos = new LinkedList<>();
+	private static LinkedList<Producto> ventas = new LinkedList<>();
 	Producto(String nom,String des,long pre){
 		this.nombre=nom;
 		this.descripcion=des;
@@ -50,6 +51,7 @@ public class Producto {
 		return this.precio;
 	}
 	
+
 	public static void agregarProducto(String nom,String des,long pre) {
 		Producto p = (new Producto(nom, des, pre));
 		System.out.println("\nProducto creado con exito.");
@@ -64,9 +66,9 @@ public class Producto {
 	public String toString() {
 		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio;
 	}
-	public void adicionarProducto(Producto p) {
-		productos.add(this);
-	}
+	public static void adicionarProducto(Producto p) {
+		productos.add(p);
+  }
 	
 	public static void agregarVenta(Producto p) {
 		ventas.add(p);
@@ -82,23 +84,22 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
-
-	public static ArrayList<Producto> getProductos() {
+	public static LinkedList<Producto> getProductos() {
 		return productos;
 	}
 
+	static void setProductos(LinkedList<Producto> productos) {
 
-	static void setProductos(ArrayList<Producto> productos) {
 		Producto.productos = productos;
 	}
 
 
-	static ArrayList<Producto> getVentas() {
+
+	static LinkedList<Producto> getVentas() {
 		return ventas;
 	}
 
-
-	static void setVentas(ArrayList<Producto> ventas) {
+	static void setVentas(LinkedList<Producto> ventas) {
 		Producto.ventas = ventas;
 	}
 	

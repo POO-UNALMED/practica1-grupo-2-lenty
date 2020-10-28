@@ -13,8 +13,8 @@ public class Main {
 	static Scanner in = new Scanner(System.in);
 	static String op;
 	
-	public static void main(String[] args) {		
-						
+	public static void main(String[] args) {
+		System.out.println("_____Bienvenido_____");
 		Lector.Leer();
 		menuInicial();
 				
@@ -25,13 +25,14 @@ public class Main {
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Menú de Usuarios \n2 - Menú de Ordenes\n3 - Menú de Productos \n4 - Menú de Vehiculos \n5 - Menú de Sedes \n6 - Guardar cambios y salir";
 		System.out.println(aux);
+		System.out.print("\nIngrese la opcion que desea: ");
 		while (true) {
 			op=in.next();
 			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5") || op.equals("6")) {
 				break;
 			}
 			else {
-				System.out.println("Ingresa una opcion valida");
+				System.out.print("Ingresa una opcion valida: ");
 				System.out.println(aux);	
 			}
 		}
@@ -415,7 +416,7 @@ public class Main {
 				String telefono = in.next();
 				System.out.print("\nIngrese el genero del Cliente: ");
 				String genero = in.next();
-				System.out.print("\nIngrese la direccion del Cliente: ");
+				System.out.print("\nIngrese la direccion del Cliente (Sin espacios): ");
 				String dir = in.next();
 				System.out.print("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
 				String pago = in.next();
@@ -444,7 +445,7 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Repartidores");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor\n3 - Regresar";
+		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor \n3 - Regresar";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -458,8 +459,8 @@ public class Main {
 		}
 		switch(op) {
 			case "1":
-				Cliente.verClientes();
-				menuClientes();
+				Repartidor.verRepartidores();
+				menuRepartidores();
 				break;
 				
 			case "2":
@@ -472,13 +473,13 @@ public class Main {
 				System.out.print("\nIngrese el genero del Repartidor: ");
 				String genero = in.next();
 				System.out.print("\nIngrese la entidad de salud del Repartidor: ");
-				String entSalud = in.next();
+				String entSalud = in.nextLine();
 				System.out.print("\nIngrese el salario del Repartidor: ");
 				int salario = in.nextInt();
 				Repartidor.agregarRepartidor(entSalud, salario, true, id, nombre, genero, telefono);
 				menuRepartidores();
 				break;
-				
+
 			case "3":
 				menuUsuarios();
 				break;
@@ -629,7 +630,7 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Sedes");
 		System.out.println("Seleccione una opcion");
-		String aux= "1 - Consultar sede \n2 - Registrar sede \n3 - Modificar sede \n4 - Eliminar sede \n5 - Contultar sede de mayor ventas  \n6 Regresar al menu principal";
+		String aux= "1 - Consultar sedes \n2 - Registrar sede \n3 - Modificar sede \n4 - Eliminar sede \n5 - Consultar sede de mayor ventas  \n6 - Regresar al menu principal";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
@@ -654,6 +655,7 @@ public class Main {
 				int telefono = in.nextInt();
 				Sede sede = new Sede (dir, telefono);
 				Sede.adicionarSede(sede);
+				menuSedes();
 				break;
 				
 			case "3":

@@ -1,3 +1,6 @@
+/*La base de datos fue diseñada por Camilo y implementada en cada clase segun su respectivo usario, la funcion de este modulo es leer la información en los archivos txt 
+ * y llena las listas de cada clase con los objetos correspondientes
+ */
 package baseDatos;
 import java.io.*;
 
@@ -5,11 +8,13 @@ import gestionHumana.Cliente;
 import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
 import orden.Orden;
+import orden.Producto;
+import sede.Sede;
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
 	static File archivo = new File("");
-	
+	/*Este metodo se ejecuta al ejecutar el programa para cargar la base de datos de objetos de cada eespectiva clase*/
 	public static void Leer() {
 		
 
@@ -38,7 +43,7 @@ public class Lector {
 			int numVehiculos = objectInputStream.readInt();
 			
 			for (int i =1; i<=numVehiculos; i++ ) {
-				Vehiculo.adicionarVehiculo(((Vehiculo) objectInputStream.readObject()));
+				Sede.adicionarSede(((Sede) objectInputStream.readObject()));
 				// Adicionar print en caso de querer mostrarlos por consola
 				
 			}
@@ -48,6 +53,7 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+
 		// Repartidores
 		try {
 			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
@@ -104,5 +110,25 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numProductos = objectInputStream.readInt();
+			Producto producto;
+			for (int i =1; i<=numProductos; i++ ) {
+				producto = (Producto) objectInputStream.readObject();
+				Producto.adicionarProducto(producto);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+
 	}
 }

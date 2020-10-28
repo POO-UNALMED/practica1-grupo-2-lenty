@@ -1,8 +1,14 @@
+/*La base de datos fue diseñada por Camilo y implementada en cada clase segun su respectivo usario, la funcion de este modulo es escribir la información en los archivos txt 
+ * de las listas de objetos de cada clase
+ */
 package baseDatos;
 import java.io.*;
 
+
 import gestionHumana.*;
 import orden.Orden;
+import orden.Producto;
+
 import sede.Sede;
 import vehiculo.*;
 
@@ -10,6 +16,7 @@ public class Escritor {
 
 	static File archivo = new File("");
 	private static ObjectOutputStream objectOutputStream;
+	/*Este metodo se ejecuta al cerrar el programa para guardar la base de datos de objetos de cada respectiva clase*/
 	public static void Escribir() {
 		try {
 			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
@@ -81,6 +88,22 @@ public class Escritor {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+		try {
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			objectOutputStream = new ObjectOutputStream(salida);
+			
+			objectOutputStream.writeInt(new Integer((Producto.getProductos()).size()));
+			for (Producto producto : Producto.getProductos())
+				objectOutputStream.writeObject(producto);
+			
+			
+			objectOutputStream.close();
+		}
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		
+
 	}
 }	    
 	
