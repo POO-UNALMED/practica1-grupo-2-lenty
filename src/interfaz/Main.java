@@ -56,7 +56,7 @@ public class Main {
 				menuSedes();
 				break;
 			case "6":
-				Escritor.Escribir();;
+				Escritor.Escribir();
 				break;
 		}
 	}
