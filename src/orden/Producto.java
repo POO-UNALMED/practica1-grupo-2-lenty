@@ -2,7 +2,9 @@ package orden;
 import java.util.*;
 import gestionHumana.*;
 import sede.Sede;
-public class Producto {
+import java.io.*;
+public class Producto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String descripcion;
 	private long precio;

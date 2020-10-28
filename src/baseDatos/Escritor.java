@@ -88,7 +88,7 @@ public class Escritor {
 			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
 			objectOutputStream = new ObjectOutputStream(salida);
 			
-			objectOutputStream.writeInt(new Integer((Vehiculo.getVehiculos()).size()));
+			objectOutputStream.writeInt(new Integer((Producto.getProductos()).size()));
 			for (Producto producto : Producto.getProductos())
 				objectOutputStream.writeObject(producto);
 			
