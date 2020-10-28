@@ -1,11 +1,13 @@
 package gestionHumana;
 import java.util.Iterator;
+import java.io.*;
 import java.util.LinkedList;
 
 import vehiculo.*;
 
 
-public class Repartidor extends Persona {
+public class Repartidor extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private String entSalud;
 	Vehiculo vehiculo;
@@ -14,8 +16,6 @@ public class Repartidor extends Persona {
     public static LinkedList <Repartidor> repartidores = new LinkedList<Repartidor>();
     int sumCalificaciones;
     int numCalificaciones;
-    float calificacion = sumCalificaciones/numCalificaciones;
-    
     
     
     public Repartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
@@ -50,13 +50,14 @@ public class Repartidor extends Persona {
         Iterator <Vehiculo> iterador = (Vehiculo.getVehiculos()).listIterator(); 
         while(iterador.hasNext()) {
         	vehiculo = iterador.next();
-        	if (vehiculo.documentosAlDia == true && vehiculo.repartidor == null ) {
+        	if (vehiculo.getDocumentosAlDia() == true && vehiculo.getRepartidor() == null ) {
         		vehiculo.setRepartidor(this);
         	}
         }
     }
+    
     public void desasignarVehiculo() {
-    	(vehiculo.repartidor) = null;
+    	vehiculo.setRepartidor(null);
         vehiculo = null;    	
     }
     public void calificarRepartidor(int calificacion) {
@@ -89,6 +90,26 @@ public class Repartidor extends Persona {
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-       
+     
+    public static void agregarRepartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
+		repartidores.add(new Repartidor(entSalud, salario, disponibilidad, id, nombre, genero, telefono));
+		System.out.println("Repartidor creado con exito.");
+	}
+	
+	public static void verRepartidores() {
+		int i = 0;
+    	for(Repartidor repartidor: repartidores) {
+	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario());
+	    	i++;
+		}
+	}
+	
+	public static LinkedList<Repartidor> getRepartidores() {
+		return repartidores;
+	}
+	
+	public static void adicionarRepartidor(Repartidor repartidor) {
+		repartidores.add(repartidor);
+	}
     
 }

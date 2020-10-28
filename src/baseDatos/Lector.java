@@ -1,12 +1,11 @@
 package baseDatos;
 import java.io.*;
 
+import gestionHumana.Cliente;
+import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
-<<<<<<< Updated upstream
-=======
 import orden.Orden;
 import orden.Producto;
->>>>>>> Stashed changes
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
@@ -50,8 +49,7 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
-<<<<<<< Updated upstream
-=======
+
 		// Repartidores
 		try {
 			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
@@ -108,6 +106,7 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+
 		try {
 			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
 			objectInputStream = new ObjectInputStream(entrada);
@@ -126,9 +125,6 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
->>>>>>> Stashed changes
-	}
-	
-	
 
+	}
 }

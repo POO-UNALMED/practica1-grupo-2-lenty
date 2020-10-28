@@ -1,10 +1,15 @@
 package gestionHumana;
+import java.io.*;
 
-public class Cliente extends Persona {
+import java.util.LinkedList;
+
+public class Cliente extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String direccion;
 	private String metPago;
 	private long tarjeta;
+	private static LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 	
 	public Cliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
         super(id, nombre, genero, telefono);
@@ -50,11 +55,24 @@ public class Cliente extends Persona {
         this.tarjeta = tarjeta;
     }
     
-    public void crearOrden(){
-        
-    }
-    
-    public void pagar() {
-        
-    }
+	public static void agregarCliente(String direccion, String metPago, long tarjeta, long id, String nombre, String genero, String telefono) {
+		clientes.add(new Cliente(direccion, metPago, tarjeta, id, nombre, genero, telefono));
+		System.out.println("Cliente creado con exito.");
+	}
+	
+	public static void verClientes() {
+		int i = 0;
+    	for(Cliente cliente: clientes) {
+	    	System.out.println(i+"- Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion());
+	    	i++;
+		}
+	}
+	
+	public static LinkedList<Cliente> getClientes() {
+		return clientes;
+	}
+	
+	public static void adicionarCliente(Cliente cliente) {
+		clientes.add(cliente);
+	}
 }

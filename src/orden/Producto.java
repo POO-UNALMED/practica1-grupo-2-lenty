@@ -3,24 +3,27 @@ import java.util.*;
 import gestionHumana.*;
 import sede.Sede;
 public class Producto {
-	private static List<Producto> productos= new ArrayList<>();
 	private String nombre;
 	private String descripcion;
 	private long precio;
+	private int cantidad;
+	private static ArrayList<Producto> productos = new ArrayList<>();
+	private static ArrayList<Producto> ventas = new ArrayList<>();
 	Producto(String nom,String des,long pre){
 		this.nombre=nom;
 		this.descripcion=des;
 		this.precio=pre;
+		this.adicionarProducto(this);
 	}
 	
 	
-	public Producto productoMasVendido() {
+	public static Producto productoMasVendido() {
 		int aux = 0;
 		Producto p = null;
-		for (int i=0;i<productos.size();i++) {
-			if (Collections.frequency(productos, productos.get(i))>aux) {
-				aux = Collections.frequency(productos, productos.get(i));
-				p = productos.get(i);
+		for (int i=0;i<ventas.size();i++) {
+			if (Collections.frequency(ventas, ventas.get(i))>aux) {
+				aux = Collections.frequency(ventas, ventas.get(i));
+				p = ventas.get(i);
 			}
 		}
 		return p;
@@ -45,5 +48,25 @@ public class Producto {
 	}
 	long getPrecio() {
 		return this.precio;
+	}
+	
+	public static void agregarProducto(String nom,String des,long pre,int can) {
+		for (int i = 0; i < can; i++) {	
+			productos.add(new Producto(nom, des, pre));
+		}
+		System.out.println("Producto creado con exito.");
+	}
+	public static void verProductos() {
+		for (int i = 0; i<productos.size();i++) {
+			System.out.println("\nProducto "+ (i+1));
+			System.out.println(productos.get(i));
+		}
+	}
+
+	public String toString() {
+		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio;
+	}
+	public void adicionarProducto(Producto p) {
+		productos.add(this);
 	}
 }
