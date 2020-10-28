@@ -58,6 +58,7 @@ public class Orden implements Serializable {
 			this.valor = valor;
 		}
 		ordenes.add(this);
+		System.out.println("\nOrden creada con exito.\n");
 		
 	}
 	static public void consultarOrdenesActivas() {
