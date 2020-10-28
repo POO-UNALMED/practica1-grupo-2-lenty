@@ -13,6 +13,7 @@ public class Producto {
 		this.nombre=nom;
 		this.descripcion=des;
 		this.precio=pre;
+		this.adicionarProducto(this);
 	}
 	
 	
@@ -64,5 +65,8 @@ public class Producto {
 
 	public String toString() {
 		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio;
+	}
+	public void adicionarProducto(Producto p) {
+		productos.add(this);
 	}
 }

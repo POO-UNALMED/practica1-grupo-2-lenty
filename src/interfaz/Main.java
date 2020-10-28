@@ -124,14 +124,11 @@ public class Main {
 			System.out.println("ingrese los parametros de la orden: \n");
 			System.out.println("ID de la orden:");
 			id=in.nextInt();
-			System.out.println("Ingrese el indice del cliente de la orden, si lo desconoce, ingrese -1");
+			Cliente.verClientes();
+			System.out.println("Ingrese el indice del cliente de la orden");
 			while(true) {
 				cli=in.nextInt();
-				if(cli==-1) {
-					Cliente.verClientes();
-					System.out.println("Ingrese el indice del cliente de la orden");
-				}
-				else if(cli>=0 && cli<Cliente.getClientes().size()) {
+				if(cli>=0 && cli<Cliente.getClientes().size()) {
 					c=Cliente.getClientes().get(cli);
 					break;
 				}
@@ -139,14 +136,11 @@ public class Main {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
-			System.out.println("Ingrese el indice de la sede de la orden, si lo desconoce, ingrese -1 ");
+			Sede.consultarSedes();
+			System.out.println("Ingrese el indice de la sede de la orden");
 			while(true) {
 				sed=in.nextInt();
-				if(sed==-1) {
-					Sede.consultarSedes();
-					System.out.println("Ingrese el indice de la sede de la orden:");
-				}
-				else if(sed>=0 && sed<Sede.getSede().size()) {
+				if(sed>=0 && sed<Sede.getSede().size()) {
 					s=Sede.getSede().get(sed);
 					break;
 				}
@@ -154,14 +148,11 @@ public class Main {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
-			System.out.println("Ingrese el indice del repartidor de la orden, si lo desconoce, ingrese -1  ");
+			Repartidor.verRepartidores();
+			System.out.println("Ingrese el indice del repartidor de la orden");
 			while(true) {
 				rep=in.nextInt();
-				if(rep==-1) {
-					Repartidor.verRepartidores();;
-					System.out.println("Ingrese el indice del repartidor de la orden:");
-				}
-				else if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==true ) {
+				if(rep>=0 && rep<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep).disponibilidad==true ) {
 					r=Repartidor.repartidores.get(rep);
 					break;
 				}
@@ -180,36 +171,177 @@ public class Main {
 			new Orden(id,c,s,r,valor,cantP,peso,es);
 		
 		case "3":
-			System.out.println("Ingrese el indice de la orden que desea modificar, sí desconoce los indices, ingrese -1 ");
+			Orden.consultarOrdenesActivas();
+			System.out.println("Ingrese el indice de la orden que desea modificar");
+			Orden aux2=null;
 			while(true) {
 				int o=in.nextInt();
-				if(o==-1) {
-					Orden.consultarOrdenesActivas();
-				}
-				else if(o>=0 && o<Orden.getOrdenes().size()) {
-					Orden.getOrdenes().get(o).modificarOrden();
+				if(o>=0 && o<Orden.getOrdenes().size()) {
+					aux2=Orden.getOrdenes().get(o);
+					break;
 				}
 				else {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
+			String op,ch;
+			System.out.println("________________________\n");
+			System.out.println("¿Qué desea modificar?");
+			System.out.println("Seleccione una opcion: ");
+			String aux4="\n1 - ID de orden \n2 - Cliente de orden \n3 - Sede de orden \n4 - Repartidor de orden \n5 - Valor de orden \n6 - Cantidad de productos de orden \n7 - Peso total de orden \n8 - Estado de la Orden \n9 - Regresar";
+			System.out.println(aux);
+			while (true) {
+				op=in.next();
+				if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5") || op.equals("6") || op.equals("7") || op.equals("8") || op.equals("9")) {
+					break;
+				}
+				else {
+					System.out.println("Ingresa una opcion valida");
+					System.out.println(aux4);	
+				}
+			}
+			switch(op) {
+				case "1":
+					System.out.println("Ingrese un nuevo ID de la orden :");
+					aux="Ingrese un nuevo ID de la orden :";
+					while(true) {
+						ch=in.next();
+						if(isNumeric(ch)){
+							aux2.setId(Integer.parseInt(ch));
+							System.out.print("Cambio realizado\n");
+							menuOrden();
+							break;
+						}
+						else {
+							System.out.println("Ingresa una opcion valida");
+							System.out.println(aux);
+						}
+					}
+			case "2":
+				Cliente.verClientes();
+				System.out.println("Ingrese el indice del cliente nuevo de la orden");
+				while(true) {
+					int cli1=in.nextInt();
+					if(cli1>=0 && cli1<Cliente.getClientes().size()) {
+						aux2.setCliente(Cliente.getClientes().get(cli1));;
+						System.out.println("Cambio realizado\n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingrese un indice valido");
+					}
+				}
+				
+			case "3":
+				Sede.consultarSedes();
+				System.out.println("Ingrese el indice de la sede nueva de la orden");
+				while(true) {
+					int sed1=in.nextInt();
+					if(sed1>=0 && sed1<Sede.getSede().size()) {
+						aux2.setSede(Sede.getSede().get(sed1));
+						System.out.println("Cambio realizado, siga modificando \n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingrese un indice valido");
+					}
+				}
+				
+			case "4":
+				Repartidor.verRepartidores();
+				System.out.println("Ingrese el indice del repartidor nuevo de la orden");
+				while(true) {
+					int rep1=in.nextInt();
+					if(rep1>=0 && rep1<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep1).disponibilidad==true ) {
+						aux2.setRepartidor(Repartidor.getRepartidores().get(rep1));
+						System.out.println("Cambio realizado, siga modificando \n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingrese un indice valido");
+					}
+				}
+				
+			case "5":
+				System.out.println("Ingrese un nuevo valor de la orden :");
+				aux="Ingrese un nuevo valor de la orden :";
+				while(true) {
+					ch=in.next();
+					if(isNumeric(ch)){
+						aux2.setValor(Integer.parseInt(ch));
+						System.out.print("Cambio realizado\n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingresa una opcion valida");
+						System.out.println(aux);
+					}
+				}
+			case "6":
+				System.out.println("Ingrese una nueva cantidad de productos en la orden :");
+				aux="Ingrese una nueva cantidad de productos en la orden :";
+				while(true) {
+					ch=in.next();
+					if(isNumeric(ch)){
+						aux2.setCantProductos(Integer.parseInt(ch));
+						System.out.print("Cambio realizado, siga modificando \n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingresa una opcion valida");
+						System.out.println(aux);
+					}
+				}
+			case "7":
+				System.out.println("Ingrese un nuevo peso total de la orden :");
+				aux="Ingrese un nuevo peso total de la orden :";
+				while(true) {
+					ch=in.next();
+					if(isNumeric(ch)){
+						aux2.setPesoTotal(Integer.parseInt(ch));
+						System.out.print("Cambio realizado, siga modificando \n");
+						menuOrden();
+						break;
+					}
+					else {
+						System.out.println("Ingresa una opcion valida");
+						System.out.println(aux);
+					}
+				}
+			case "8":
+				System.out.println("Ingrese un nuevo estado de la orden :");
+				aux2.setEstado(in.next());
+				System.out.print("Cambio realizado, siga modificando \n");
+				menuOrden();
+				break;
+			case "9":
+				Main.menuOrden();
+				break;
+			}
 		case "4":
-			System.out.println("Ingrese el indice de la orden que desea eliminar, sí desconoce los indices, ingrese -1 ");
+			Orden.consultarOrdenesActivas();
+			System.out.println("Ingrese el indice de la orden que desea eliminar");
 			while(true) {
 				int u=in.nextInt();
-				if(u==-1) {
-					Orden.consultarOrdenesActivas();
-					System.out.println("Ingrese el indice de la orden que desea eliminar");
-				}
-				else if(u>=0 && u<Orden.getOrdenes().size()) {
+				if(u>=0 && u<Orden.getOrdenes().size()) {
 					Orden.cancelarOrden(u);
 					System.out.println("Se ha eliminado el elemento, volvera al menu de ordenes");
 					menuOrden();
+				}
+				else {
+					System.out.println("Ingresa una opcion valida");
+					System.out.println(aux);
 				}
 			}
 			
 		case "5":
 			menuInicial();
+			break;
 		}
 	}
 	static void menuClientes() {
@@ -530,5 +662,12 @@ public class Main {
 
 		}
 	}
-	
+	private static boolean isNumeric(String cadena){
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}
+	}
 }
