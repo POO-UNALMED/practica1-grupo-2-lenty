@@ -174,15 +174,14 @@ public class Main {
 			Producto.verProductos();
 			System.out.println("Ingrese el producto que desea ordenar (Ingrese -1 para cerrar su eleccion)");
 			while (true) {
-				rep = in.nextInt()-1;
-				if(rep>0 && rep<=Producto.getProductos().size()) {
+				rep = in.nextInt();
+				if(rep>=0 && rep<=Producto.getProductos().size()) {
 					p.add(Producto.getProductos().get(rep));
-					Producto.agregarVenta(Producto.getProductos().get(rep));
 				}
 				else if(rep>Producto.getProductos().size()) {
 					System.out.println("Ingrese un producto dentro de la lista");
 				}
-				else if(rep == -2) {
+				else if(rep == -1) {
 					break;
 				}
 			}
@@ -392,11 +391,11 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Clientes");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Ver Clientes \n2 - Agregar Cliente\n3 - Regresar";
+		String aux="1 - Ver Clientes \n2 - Agregar Cliente\n3 - Consultar cliente que mas ha comprado \n4 - Regresar";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
 				break;
 			}
 			else {
@@ -417,7 +416,7 @@ public class Main {
 				String nombre = in.next();
 				System.out.print("\nIngrese el telefono del Cliente: ");
 				String telefono = in.next();
-				System.out.print("\nIngrese el genero del Cliente: ");
+				System.out.print("\nIngrese el genero del Cliente (M/F): ");
 				String genero = "";
 				while (true) {
 					genero = in.next();
@@ -447,6 +446,10 @@ public class Main {
 				break;
 				
 			case "3":
+				System.out.println(Cliente.clienteMayorVentas());
+				menuClientes();
+				break;
+			case "4":
 				menuUsuarios();
 				break;
 
@@ -457,11 +460,11 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Repartidores");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor \n3 - Regresar";
+		String aux="1 - Ver Repartidores \n2 - Agregar Repartidor \n3 - Repartidor con mas pedido \n4 - Regresar";
 		System.out.println(aux);
 		while (true) {
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
 				break;
 			}
 			else {
@@ -502,16 +505,23 @@ public class Main {
 				break;
 
 			case "3":
+				System.out.println(Repartidor.repartidorMasPedidos());
+				menuRepartidores();
+				break;
+			case "4":
 				menuUsuarios();
 				break;
 
 		}
 	}
+	/*Menu productos es el metodo en la clase Main que permite modificar y tener acceso a Objetos de tipo Producto,
+	Permitiendo agregar productos, ver los productos con sus respectivas ventas, así como solo ver cual es el producto
+	Mas vendido en el momento*/
 	static void menuProductos() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Productos\n");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar productos mas vendidos \n4 - Regresar";
+		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar producto mas vendido \n4 - Regresar";
 		System.out.println(aux);
 		System.out.print("\nIngrese la opcion que desea: ");
 		while (true) {
@@ -542,7 +552,7 @@ public class Main {
 			break;
 			
 		case "3":
-			System.out.println(Producto.productoMasVendido());
+			System.out.println(Producto.productoMayorVentas());
 			menuProductos();
 			break;
 

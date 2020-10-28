@@ -40,8 +40,12 @@ public class Orden implements Serializable {
 		this.cantProductos=p.size();
 		this.pesoTotal=peso;
 		this.estado=es;
+		for(Producto pr : p) {
+			pr.sumarVenta();
+		}
 		c.sumarVenta();
 		s.sumarVenta();
+		r.sumarPedido();
 		r.aceptarPedido();
 		ordenes.add(this);
 		
@@ -56,7 +60,9 @@ public class Orden implements Serializable {
     	}
 	}
 	public static void cancelarOrden(int i) {
+		ordenes.get(i).repartidor.terminarPedido();
 		ordenes.remove(i);
+		
 	}
 	public void aceptarOrden() {
 		this.estado = "Aceptada";

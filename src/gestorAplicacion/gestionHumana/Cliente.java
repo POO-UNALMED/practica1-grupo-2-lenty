@@ -90,7 +90,7 @@ public class Cliente extends Persona implements Serializable {
 		
 		
 	}
-	
+	/*Metodo que permite conocer cual es el cliente que mas ha comprado*/
 	public static Cliente clienteMayorVentas() {
 		int aux = 0;
 		Cliente p = null;
@@ -106,4 +106,7 @@ public class Cliente extends Persona implements Serializable {
 		this.cantVentas++;
 	}
 
+	public String toString() {
+		return "Documento:"+this.getId()+"\n Nombre:"+this.getNombre()+"\n Telefono:"+this.getTelefono()+"\n Metodo Pago: "+this.getMetPago()+"\n Direccion:"+this.getDireccion() +"\n Ha comprado "+this.cantVentas+" veces\n";
+	}
 }
