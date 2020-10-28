@@ -26,7 +26,7 @@ public class Sede implements Serializable {
 	static public void consultarSedes() {
     	int i = 0;
     	for(Sede sede: sedes) {
-    	System.out.println(i+"- Direccion:"+ sede.direccion+" teledono:"+sede.telefono+" Ventas:"+sede.cantVentas);
+    	System.out.println(i+"- Direccion:"+ sede.direccion+" \nTelefono:"+sede.telefono+" \nVentas:"+sede.cantVentas + "\n\n");
     	i++;
 		}
     }
@@ -63,6 +63,10 @@ public class Sede implements Serializable {
 
 	public static void adicionarSede(Sede sede) {
 		sedes.add(sede);
+	}
+	
+	public void sumarVenta() {
+		this.cantVentas++;
 	}
 	
 	
