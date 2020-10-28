@@ -53,9 +53,9 @@ public class Producto implements Serializable{
 	
 	public static void agregarProducto(String nom,String des,long pre,int can) {
 		for (int i = 0; i < can; i++) {	
-			productos.add(new Producto(nom, des, pre));
+			Producto p = (new Producto(nom, des, pre));
 		}
-		System.out.println("Producto creado con exito.");
+		System.out.println("\nProducto creado con exito.");
 	}
 	public static void verProductos() {
 		for (int i = 0; i<productos.size();i++) {
