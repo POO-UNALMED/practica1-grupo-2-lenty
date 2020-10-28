@@ -94,6 +94,11 @@ public class Main {
 		}
 	}
 	public static void menuOrden() {
+		/*Menu orden es el metodo en la clase Main qu epermite modificar y tener acceso a Objetos de tipo Orden,
+		Para ello, se despliega un menu que presenta las diferentes opciones dentro del mismo: ver las ordenes 
+		activas en el sistema, crear una nueva orden, modificar una orden en especifico, esta opcion despliega otro menu
+		donde hay que escoger cual orden se desea modificar y qué parametro de la misma, eliminar una ordenm donde se eliminara
+		una orden que se seleccione y, por ultimo, regresar al menu inicial*/
 		System.out.println("________________________\n");
 		System.out.println("Menú Orden");
 		System.out.println("Seleccione una opcion");
@@ -325,7 +330,7 @@ public class Main {
 				break;
 			}
 		case "4":
-			Orden.consultarOrdenesActivas();
+			Orden.ConsultarOrdenesTotales();
 			System.out.println("Ingrese el indice de la orden que desea eliminar");
 			while(true) {
 				int u=in.nextInt();
