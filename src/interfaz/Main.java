@@ -473,7 +473,7 @@ public class Main {
 				System.out.print("\nIngrese el genero del Repartidor: ");
 				String genero = in.next();
 				System.out.print("\nIngrese la entidad de salud del Repartidor: ");
-				String entSalud = in.nextLine();
+				String entSalud = in.next();
 				System.out.print("\nIngrese el salario del Repartidor: ");
 				int salario = in.nextInt();
 				Repartidor.agregarRepartidor(entSalud, salario, true, id, nombre, genero, telefono);
@@ -693,7 +693,7 @@ public class Main {
 				menuSedes();
 				break;
 			case "5":
-				Sede.sedeMayorVentas();
+				System.out.println(Sede.sedeMayorVentas());
 				menuSedes();
 				break;
 			case "6":

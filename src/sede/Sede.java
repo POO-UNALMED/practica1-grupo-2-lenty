@@ -6,7 +6,7 @@ import vehiculo.Vehiculo;
 
 import java.io.*;
 public class Sede implements Serializable {
-	/*El objetivo de esta clase es guardar la información de las diferentes sedes que pueden despachar una orden*/
+	/*El objetivo de esta clase es guardar la informaciÃ³n de las diferentes sedes que pueden despachar una orden*/
 	private static final long serialVersionUID = 1L;
 	private static LinkedList<Sede> sedes= new LinkedList<Sede>();
 	private String direccion;
@@ -26,7 +26,9 @@ public class Sede implements Serializable {
 	static public void consultarSedes() {
     	int i = 0;
     	for(Sede sede: sedes) {
+
     	System.out.println(i+"- Direccion:"+ sede.direccion+" \nTelefono:"+sede.telefono+" \nVentas:"+sede.cantVentas + "\n\n");
+
     	i++;
 		}
     }
