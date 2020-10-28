@@ -2,8 +2,8 @@ package uiMain;
 
 import java.util.*;
 
-import gestorAplicacion.baseDatos.Escritor;
-import gestorAplicacion.baseDatos.Lector;
+import baseDatos.Escritor;
+import baseDatos.Lector;
 import gestorAplicacion.gestionHumana.*;
 import gestorAplicacion.orden.*;
 import gestorAplicacion.sede.*;
