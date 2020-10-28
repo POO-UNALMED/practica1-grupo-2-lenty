@@ -109,4 +109,13 @@ public class Cliente extends Persona implements Serializable {
 	public String toString() {
 		return "Documento:"+this.getId()+"\n Nombre:"+this.getNombre()+"\n Telefono:"+this.getTelefono()+"\n Metodo Pago: "+this.getMetPago()+"\n Direccion:"+this.getDireccion() +"\n Ha comprado "+this.cantVentas+" veces\n";
 	}
+
+	public int getCantVentas() {
+		return cantVentas;
+	}
+
+	void setCantVentas(int cantVentas) {
+		this.cantVentas = cantVentas;
+	}
+	
 }

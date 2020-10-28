@@ -124,9 +124,13 @@ public class Repartidor extends Persona implements Serializable {
 		}
 		return p;
 	}
-	
+	//Este metodo se encarga de aumentar cada que un repartidor 
+	//hace un pedido y en caso de que haya realizado mas de 5 pedidos, le aumenta 2000 a su sueldo
 	public void sumarPedido() {
 		this.cantPedidos++;
+		if(this.cantPedidos >= 5) {
+			this.salario+=2000;
+		}
 	}
 	
 	
