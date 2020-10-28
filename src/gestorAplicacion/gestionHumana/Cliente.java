@@ -118,4 +118,8 @@ public class Cliente extends Persona implements Serializable {
 		this.cantVentas = cantVentas;
 	}
 	
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 }

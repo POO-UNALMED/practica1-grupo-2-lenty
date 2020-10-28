@@ -47,6 +47,7 @@ public class Orden implements Serializable {
 		s.sumarVenta();
 		r.sumarPedido();
 		r.aceptarPedido();
+<<<<<<< Updated upstream
 		/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
 		 * En caso de ser afirmativo, se le realiza un descuento de 10%
 		 */
@@ -57,6 +58,10 @@ public class Orden implements Serializable {
 		else {
 			this.valor = valor;
 		}
+=======
+		
+		this.valor = descuento(c, valor);
+>>>>>>> Stashed changes
 		ordenes.add(this);
 		System.out.println("\nOrden creada con exito.\n");
 		
@@ -163,4 +168,18 @@ public class Orden implements Serializable {
 		this.productos = productos;
 	}
 	
+	/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
+	 * En caso de ser afirmativo, se le realiza un descuento de 10%
+	 */
+	public int descuento(Cliente c, int valor) {
+		int aux;
+		if (c.getCantVentas() >=5) {
+			aux = (int) (valor*0.9);
+			System.out.println("Se ha realizado un descuento del 10% sobre el valor total");
+		}
+		else {
+			aux = valor;
+		}
+		return aux;
+	}
 }
