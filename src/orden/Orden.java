@@ -1,10 +1,12 @@
 package orden;
+import java.io.Serializable;
 import java.util.*;
 import interfaz.Main;
 import sede.*;
 import vehiculo.Vehiculo;
 import gestionHumana.*;
-public class Orden {
+public class Orden implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private static LinkedList<Orden> ordenes = new LinkedList<Orden>();
 	private int id;
 	private Cliente cliente;
