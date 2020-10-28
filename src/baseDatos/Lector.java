@@ -115,7 +115,7 @@ public class Lector {
 			Producto producto;
 			for (int i =1; i<=numProductos; i++ ) {
 				producto = (Producto) objectInputStream.readObject();
-				Vehiculo.adicionarProducto(producto);
+				Producto.adicionarProducto(producto);
 				
 				
 			}

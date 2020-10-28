@@ -13,8 +13,8 @@ public class Main {
 	static Scanner in = new Scanner(System.in);
 	static String op;
 	
-	public static void main(String[] args) {		
-						
+	public static void main(String[] args) {
+		System.out.println("_____Bienvenido_____");
 		Lector.Leer();
 		menuInicial();
 				
@@ -25,13 +25,14 @@ public class Main {
 		System.out.println("Seleccione una opcion");
 		String aux="1 - Menú de Usuarios \n2 - Menú de Ordenes\n3 - Menú de Productos \n4 - Menú de Vehiculos \n5 - Menú de Sedes \n6 - Guardar cambios y salir";
 		System.out.println(aux);
+		System.out.print("\nIngrese la opcion que desea: ");
 		while (true) {
 			op=in.next();
 			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5") || op.equals("6")) {
 				break;
 			}
 			else {
-				System.out.println("Ingresa una opcion valida");
+				System.out.print("Ingresa una opcion valida: ");
 				System.out.println(aux);	
 			}
 		}

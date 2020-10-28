@@ -6,9 +6,8 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private long precio;
-	private int cantidad;
-	private static ArrayList<Producto> productos = new ArrayList<>();
-	private static ArrayList<Producto> ventas = new ArrayList<>();
+	private static LinkedList<Producto> productos = new LinkedList<>();
+	private static LinkedList<Producto> ventas = new LinkedList<>();
 	Producto(String nom,String des,long pre){
 		this.nombre=nom;
 		this.descripcion=des;
@@ -66,7 +65,30 @@ public class Producto {
 	public String toString() {
 		return "Nombre: "+this.nombre+", descripcion: " + this.descripcion + ", precio: " + this.precio;
 	}
-	public void adicionarProducto(Producto p) {
-		productos.add(this);
+	public static void adicionarProducto(Producto p) {
+		productos.add(p);
 	}
+
+
+
+	public static LinkedList<Producto> getProductos() {
+		return productos;
+	}
+
+
+	static void setProductos(LinkedList<Producto> productos) {
+		Producto.productos = productos;
+	}
+
+
+	static LinkedList<Producto> getVentas() {
+		return ventas;
+	}
+
+
+	static void setVentas(LinkedList<Producto> ventas) {
+		Producto.ventas = ventas;
+	}
+	
+	
 }
