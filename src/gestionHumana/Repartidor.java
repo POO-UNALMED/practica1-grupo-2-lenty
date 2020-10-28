@@ -1,11 +1,13 @@
 package gestionHumana;
 import java.util.Iterator;
+import java.io.*;
 import java.util.LinkedList;
 
 import vehiculo.*;
 
 
-public class Repartidor extends Persona {
+public class Repartidor extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private String entSalud;
 	Vehiculo vehiculo;

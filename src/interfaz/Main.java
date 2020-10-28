@@ -242,8 +242,8 @@ public class Main {
 				String telefono = in.next();
 				System.out.print("\nIngrese el genero del Cliente: ");
 				String genero = in.next();
-				System.out.print("\nIngrese la direccion del Cliente: ");
-				String dir = in.nextLine();
+				System.out.print("\nIngrese la direccion del Cliente (Sin espacios): ");
+				String dir = in.next();
 				System.out.print("\nIngrese el metodo de pago del Cliente: \n1 - Efectivo \n2 - Tarjeta");
 				String pago = in.next();
 				String metPago;

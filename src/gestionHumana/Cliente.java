@@ -1,8 +1,10 @@
 package gestionHumana;
+import java.io.*;
 
 import java.util.LinkedList;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	private String direccion;
 	private String metPago;
