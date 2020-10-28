@@ -6,10 +6,10 @@ import gestorAplicacion.vehiculo.Vehiculo;
 import gestorAplicacion.gestionHumana.*;
 public class Orden implements Serializable {
 	/*La clase orden fue realizada por Danilo, es la estructura principal del sistema de envios, ya que almacena y manipula objetos con las caracteristicas
-	Necesarias para tener claridad en cuento a lo que se estarÌa enviando, cuenta con los parametros necesarios para su identificacion y manipulacion,
-	Como un ID que se le asigna a cada orden, se le adjunta un objeto de la clase Cliente para esclarecer a quien irÌa dirigido el envio, un objeto
+	Necesarias para tener claridad en cuento a lo que se estar√≠a enviando, cuenta con los parametros necesarios para su identificacion y manipulacion,
+	Como un ID que se le asigna a cada orden, se le adjunta un objeto de la clase Cliente para esclarecer a quien ir√≠a dirigido el envio, un objeto
 	De la clase Sede que se referira al lugar donde se realizara la aceptada y el despacho de la orden, otro onjeto de clase Repartidor que se asignara
-	Como el empleado que repartira, valga la redundacia, la misma orden, al final van los parametros m·s especificos, como el valor, los productos, guardados
+	Como el empleado que repartira, valga la redundacia, la misma orden, al final van los parametros m√°s especificos, como el valor, los productos, guardados
 	Como una lista, su cantidad de onjetos total, el peso total de la orden y, por ultimo, el estado de la orden, que mostrara en que parte del proceso va el 
 	objeto ("Aceptada", "Activa","Enviada" y "Entregada").
 	
@@ -47,21 +47,6 @@ public class Orden implements Serializable {
 		s.sumarVenta();
 		r.sumarPedido();
 		r.aceptarPedido();
-<<<<<<< Updated upstream
-		/*Ahora se revisa si el cliente ha realizado mas de 5 pedidos
-		 * En caso de ser afirmativo, se le realiza un descuento de 10%
-		 */
-		if (c.getCantVentas() >=5) {
-			this.valor = (int) (valor*0.9);
-			System.out.println("Se ha realizado un descuento del 10% sobre el valor total");
-		}
-		else {
-			this.valor = valor;
-		}
-=======
-		
-		this.valor = descuento(c, valor);
->>>>>>> Stashed changes
 		ordenes.add(this);
 		System.out.println("\nOrden creada con exito.\n");
 		
@@ -70,7 +55,7 @@ public class Orden implements Serializable {
     	int i = 0;
     	for(Orden orden: ordenes) {
     		if(true) {
-    			System.out.println(i+"- ID: "+orden.getId()+" \nCliente: "+orden.getCliente().getNombre()+" \nDirecciÛn sede: "+orden.getSede().getDireccion()+" \nRepartidor: "+orden.getRepartidor().getNombre()+" \nValor: "+orden.getValor()+" \nCantidad de productos: "+orden.getCantProductos()+" \nPeso total: "+orden.getPesoTotal()+" \nEstado: "+orden.getEstado()+"\n\n");
+    			System.out.println(i+"- ID: "+orden.getId()+" \nCliente: "+orden.getCliente().getNombre()+" \nDirecci√≥n sede: "+orden.getSede().getDireccion()+" \nRepartidor: "+orden.getRepartidor().getNombre()+" \nValor: "+orden.getValor()+" \nCantidad de productos: "+orden.getCantProductos()+" \nPeso total: "+orden.getPesoTotal()+" \nEstado: "+orden.getEstado()+"\n\n");
     		}
     		i++;
     	}
@@ -157,7 +142,7 @@ public class Orden implements Serializable {
 	public static void ConsultarOrdenesTotales(){
 		int i = 0;
     	for(Orden orden: ordenes) {
-    			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" DirecciÛn sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
+    			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" Direcci√≥n sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
     		i++;
     	}
 	}
