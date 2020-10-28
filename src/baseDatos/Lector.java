@@ -1,7 +1,7 @@
 /*La base de datos fue diseñada por Camilo y implementada en cada clase segun su respectivo usario, la funcion de este modulo es leer la información en los archivos txt 
  * y llena las listas de cada clase con los objetos correspondientes
  */
-package gestorAplicacion.baseDatos;
+package baseDatos;
 import java.io.*;
 
 import gestorAplicacion.gestionHumana.*;
@@ -18,7 +18,7 @@ public class Lector {
 		
 
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\vehiculos.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\vehiculos.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numVehiculos = objectInputStream.readInt();
@@ -36,7 +36,7 @@ public class Lector {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\sedes.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\sedes.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numVehiculos = objectInputStream.readInt();
@@ -55,7 +55,7 @@ public class Lector {
 
 		// Repartidores
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\repartidores.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numRepartidores = objectInputStream.readInt();
@@ -74,7 +74,7 @@ public class Lector {
 		}
 		// Clientes
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\clientes.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\clientes.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numClientes = objectInputStream.readInt();
@@ -92,7 +92,7 @@ public class Lector {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\ordenes.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\ordenes.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numOrdenes = objectInputStream.readInt();
@@ -111,7 +111,7 @@ public class Lector {
 		}
 
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\productos.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numProductos = objectInputStream.readInt();
@@ -129,7 +129,7 @@ public class Lector {
 			System.out.println(excepcion.getMessage());
 		}
 		try {
-			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\gestorAplicacion\\baseDatos\\temp\\personas.txt");
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\personas.txt");
 			objectInputStream = new ObjectInputStream(entrada);
 			
 			int numPersonas = objectInputStream.readInt();
