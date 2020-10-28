@@ -1,8 +1,11 @@
 package baseDatos;
 import java.io.*;
 
+
 import gestionHumana.*;
 import orden.Orden;
+import orden.Producto;
+
 import sede.Sede;
 import vehiculo.*;
 
@@ -81,6 +84,22 @@ public class Escritor {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+		try {
+			FileOutputStream salida = new FileOutputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			objectOutputStream = new ObjectOutputStream(salida);
+			
+			objectOutputStream.writeInt(new Integer((Vehiculo.getVehiculos()).size()));
+			for (Producto producto : Producto.getProductos())
+				objectOutputStream.writeObject(producto);
+			
+			
+			objectOutputStream.close();
+		}
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+		
+
 	}
 }	    
 	

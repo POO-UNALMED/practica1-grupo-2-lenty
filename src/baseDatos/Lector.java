@@ -5,6 +5,7 @@ import gestionHumana.Cliente;
 import gestionHumana.Repartidor;
 import vehiculo.Vehiculo;
 import orden.Orden;
+import orden.Producto;
 
 public class Lector {
 	static ObjectInputStream objectInputStream;
@@ -48,6 +49,7 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+
 		// Repartidores
 		try {
 			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\repartidores.txt");
@@ -104,5 +106,25 @@ public class Lector {
 		catch(Exception excepcion) {
 			System.out.println(excepcion.getMessage());
 		}
+
+		try {
+			FileInputStream entrada = new FileInputStream(archivo.getAbsolutePath()+"\\src\\baseDatos\\temp\\productos.txt");
+			objectInputStream = new ObjectInputStream(entrada);
+			
+			int numProductos = objectInputStream.readInt();
+			Producto producto;
+			for (int i =1; i<=numProductos; i++ ) {
+				producto = (Producto) objectInputStream.readObject();
+				Vehiculo.adicionarProducto(producto);
+				
+				
+			}
+			objectInputStream.close();
+		}
+		
+		catch(Exception excepcion) {
+			System.out.println(excepcion.getMessage());
+		}
+
 	}
 }
