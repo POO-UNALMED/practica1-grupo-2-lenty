@@ -74,7 +74,7 @@ public class Cliente extends Persona implements Serializable {
 	public static void verClientes() {
 		int i = 0;
     	for(Cliente cliente: clientes) {
-	    	System.out.println(i+" - Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion() +"\n");
+	    	System.out.println(i+" - Documento:"+cliente.getId()+"\n Nombre:"+cliente.getNombre()+"\n Telefono:"+cliente.getTelefono()+"\n Metodo Pago: "+cliente.getMetPago()+"\n Direccion:"+cliente.getDireccion() +"\n Ha comprado "+cliente.cantVentas+" veces\n");
 	    	i++;
 		}
 	}
