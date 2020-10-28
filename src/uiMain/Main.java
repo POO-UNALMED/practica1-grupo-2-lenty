@@ -521,13 +521,13 @@ public class Main {
 		System.out.println("________________________\n");
 		System.out.println("Menú Productos\n");
 		System.out.println("Seleccione una opcion");
-		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar producto mas vendido \n4 - Regresar";
+		String aux="1 - Agregar producto \n2 - Consultar productos en existencia \n3 - Consultar producto mas vendido \n4 - Eliminar producto \n5 - Regresar";
 		System.out.println(aux);
 		System.out.print("\nIngrese la opcion que desea: ");
 		while (true) {
 			
 			op=in.next();
-			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4")) {
+			if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5")) {
 				break;
 			}
 			else {
@@ -555,8 +555,23 @@ public class Main {
 			System.out.println(Producto.productoMayorVentas());
 			menuProductos();
 			break;
-
+			
 		case "4":
+			Producto.verProductos();
+			System.out.print("\nIngrese el producto que desea eliminar: ");
+			while (true) {
+				int z = in.nextInt();
+				if (z>=0 && z<Producto.getProductos().size()) {
+					Producto.getProductos().remove(z);
+					break;
+				}
+				else {
+					System.out.print("\nIngrese un producto de la lista: ");
+				}
+			}
+			menuProductos();
+			break;
+		case "5":
 			menuInicial();
 			break;
 	}
