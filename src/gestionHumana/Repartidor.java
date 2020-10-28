@@ -14,8 +14,6 @@ public class Repartidor extends Persona {
     public static LinkedList <Repartidor> repartidores = new LinkedList<Repartidor>();
     int sumCalificaciones;
     int numCalificaciones;
-    float calificacion = sumCalificaciones/numCalificaciones;
-    
     
     
     public Repartidor(String entSalud, int salario, boolean disponibilidad, long id, String nombre, String genero, String telefono) {
@@ -97,9 +95,10 @@ public class Repartidor extends Persona {
 	}
 	
 	public static void verRepartidores() {
-		for (int i = 0; i < repartidores.size(); i++) {
-			System.out.println("\nRepartidor "+ (i+1));
-			System.out.println(repartidores.get(i));
+		int i = 0;
+    	for(Repartidor repartidor: repartidores) {
+	    	System.out.println(i+"- Documento:"+repartidor.getId()+"\n Nombre:"+repartidor.getNombre()+"\n Telefono:"+repartidor.getTelefono()+"\n ¿Disponible?"+repartidor.isDisponibilidad()+"\n Salario:"+repartidor.getSalario());
+	    	i++;
 		}
 	}
 	
