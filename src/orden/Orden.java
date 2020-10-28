@@ -6,8 +6,19 @@ import sede.*;
 import vehiculo.Vehiculo;
 import gestionHumana.*;
 public class Orden implements Serializable {
-	private static final long serialVersionUID = 1L;
+	/*La clase orden fue realizada por Danilo, es la estructura principal del sistema de envios, ya que almacena y manipula objetos con las caracteristicas
+	Necesarias para tener claridad en cuento a lo que se estaría enviando, cuenta con los parametros necesarios para su identificacion y manipulacion,
+	Como un ID que se le asigna a cada orden, se le adjunta un objeto de la clase Cliente para esclarecer a quien iría dirigido el envio, un objeto
+	De la clase Sede que se referira al lugar donde se realizara la aceptada y el despacho de la orden, otro onjeto de clase Repartidor que se asignara
+	Como el empleado que repartira, valga la redundacia, la misma orden, al final van los parametros más especificos, como el valor, los productos, guardados
+	Como una lista, su cantidad de onjetos total, el peso total de la orden y, por ultimo, el estado de la orden, que mostrara en que parte del proceso va el 
+	objeto ("Aceptada", "Activa","Enviada" y "Entregada").
+	
+	Tiene sus metodos unicos, suficientemente especificos, como para que se entida su funcion con el nombre de los mismos, como el de aceptar las ordenes, 
+	cancelarlas, consultar las ordenes dentro de la base de datos, rechazar la orden. */
+	private static final long serialVersionUID = 1L;	
 	private static LinkedList<Orden> ordenes = new LinkedList<Orden>();
+	private static int idG = 0;
 	private int id;
 	private Cliente cliente;
 	private Sede sede;
@@ -19,26 +30,29 @@ public class Orden implements Serializable {
 	private List<Producto> productos= new ArrayList<>();
 	private float pesoTotal;
 	public String estado;
-	public Orden(int id,Cliente c,Sede s,Repartidor r,int valor,int cantP,float peso,String es) {
-		this.id=id;
+	public Orden(Cliente c,Sede s,Repartidor r,int valor,List<Producto> p,float peso,String es) {
+		idG++;
+		this.id=idG;
 		this.cliente=c;
 		this.sede=s;
 		this.repartidor=r;
 		this.valor=valor;
-		this.cantProductos=cantP;
+		productos = p;
+		this.cantProductos=p.size();
 		this.pesoTotal=peso;
 		this.estado=es;
+		s.sumarVenta();
 		ordenes.add(this);
 	}
 	static public void consultarOrdenesActivas() {
     	int i = 0;
     	for(Orden orden: ordenes) {
-    		if(orden.getEstado().equals("Activa") || orden.getEstado().equals("Aceptada")) {
-    			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" Dirección sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
+    		if(true) {
+    			System.out.println(i+"- ID: "+orden.getId()+" \nCliente: "+orden.getCliente().getNombre()+" \nDirección sede: "+orden.getSede().getDireccion()+" \nRepartidor: "+orden.getRepartidor().getNombre()+" \nValor: "+orden.getValor()+" \nCantidad de productos: "+orden.getCantProductos()+" \nPeso total: "+orden.getPesoTotal()+" \nEstado: "+orden.getEstado()+"\n\n");
     		}
     		i++;
     	}
-    }
+	}
 	public static void cancelarOrden(int i) {
 		ordenes.remove(i);
 	}
@@ -114,6 +128,13 @@ public class Orden implements Serializable {
 	}
 	public static void adicionarOrden(Orden i) {
 		ordenes.add(i);
+	}
+	public static void ConsultarOrdenesTotales(){
+		int i = 0;
+    	for(Orden orden: ordenes) {
+    			System.out.println(i+"- ID:"+orden.getId()+" Cliente:"+orden.getCliente().getNombre()+" Dirección sede:"+orden.getSede().getDireccion()+" Repartidor:"+orden.getRepartidor().getNombre()+" Valor:"+orden.getValor()+" Cantidad de productor:"+orden.getCantProductos()+" Peso total:"+orden.getPesoTotal()+" Estado:"+orden.getEstado());
+    		i++;
+    	}
 	}
 	
 }

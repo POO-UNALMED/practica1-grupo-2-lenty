@@ -47,14 +47,13 @@ public class Producto implements Serializable{
 	void setPrecio(long i) {
 		this.precio=i;
 	}
-	long getPrecio() {
+	public long getPrecio() {
 		return this.precio;
 	}
 	
-	public static void agregarProducto(String nom,String des,long pre,int can) {
-		for (int i = 0; i < can; i++) {	
-			Producto p = (new Producto(nom, des, pre));
-		}
+
+	public static void agregarProducto(String nom,String des,long pre) {
+		Producto p = (new Producto(nom, des, pre));
 		System.out.println("\nProducto creado con exito.");
 	}
 	public static void verProductos() {
@@ -69,24 +68,36 @@ public class Producto implements Serializable{
 	}
 	public static void adicionarProducto(Producto p) {
 		productos.add(p);
+  }
+	
+	public static void agregarVenta(Producto p) {
+		ventas.add(p);
 	}
 
 
+	int getCantidad() {
+		return cantidad;
+	}
+
+
+	void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
 
 	public static LinkedList<Producto> getProductos() {
 		return productos;
 	}
 
-
 	static void setProductos(LinkedList<Producto> productos) {
+
 		Producto.productos = productos;
 	}
+
 
 
 	static LinkedList<Producto> getVentas() {
 		return ventas;
 	}
-
 
 	static void setVentas(LinkedList<Producto> ventas) {
 		Producto.ventas = ventas;

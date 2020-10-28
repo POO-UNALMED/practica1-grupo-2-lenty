@@ -92,7 +92,11 @@ public class Main {
 				break;
 
 		}
-	}
+	}/*Menu orden es el metodo en la clase Main qu epermite modificar y tener acceso a Objetos de tipo Orden,
+	Para ello, se despliega un menu que presenta las diferentes opciones dentro del mismo: ver las ordenes 
+	activas en el sistema, crear una nueva orden, modificar una orden en especifico, esta opcion despliega otro menu
+	donde hay que escoger cual orden se desea modificar y qué parametro de la misma, eliminar una ordenm donde se eliminara
+	una orden que se seleccione y, por ultimo, regresar al menu inicial*/
 	public static void menuOrden() {
 		System.out.println("________________________\n");
 		System.out.println("Menú Orden");
@@ -113,18 +117,18 @@ public class Main {
 		case "1":
 			Orden.consultarOrdenesActivas();
 			menuOrden();
+			break;
 		case "2":
-			int id,cli,sed,rep;
+			int cli,sed,rep;
 			Cliente c=null;
 			Sede s=null;
 			Repartidor r=null;
-			int valor;
-			int cantP;
+			int valor = 0;
 			float peso;
-			String es;
+			String es = "Aceptada";
+			List<Producto> p = new ArrayList<>();
 			System.out.println("ingrese los parametros de la orden: \n");
-			System.out.println("ID de la orden:");
-			id=in.nextInt();
+			System.out.println("\nClientes\n");
 			Cliente.verClientes();
 			System.out.println("Ingrese el indice del cliente de la orden");
 			while(true) {
@@ -137,6 +141,7 @@ public class Main {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
+			System.out.println("\nSedes\n");
 			Sede.consultarSedes();
 			System.out.println("Ingrese el indice de la sede de la orden");
 			while(true) {
@@ -149,6 +154,7 @@ public class Main {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
+			System.out.println("\nRepartidores\n");
 			Repartidor.verRepartidores();
 			System.out.println("Ingrese el indice del repartidor de la orden");
 			while(true) {
@@ -161,16 +167,33 @@ public class Main {
 					System.out.println("Ingrese un indice valido");
 				}
 			}
-			System.out.println("Valor de la Orden: ");
-			valor=in.nextInt();
-			System.out.println("Cantidad de productos: ");
-			cantP=in.nextInt();
-			System.out.println("Peso total de la orden: ");
+			System.out.println("\nProductos\n");
+			Producto.verProductos();
+			System.out.println("Ingrese el producto que desea ordenar (Ingrese -1 para cerrar su eleccion)");
+			while (true) {
+				rep = in.nextInt()-1;
+				if(rep>0 && rep<=Producto.getProductos().size()) {
+					p.add(Producto.getProductos().get(rep));
+					Producto.agregarVenta(Producto.getProductos().get(rep));
+				}
+				else if(rep>Producto.getProductos().size()) {
+					System.out.println("Ingrese un producto dentro de la lista");
+				}
+				else if(rep == -2) {
+					break;
+				}
+			}
+
+			for (int i = 0; i<p.size();i++) {
+				valor+= p.get(i).getPrecio();
+			}
+
+			System.out.println("\nPeso total de la orden: ");
 			peso=in.nextFloat();
-			System.out.println("Estado de la orden: ");
-			es=in.next();
-			new Orden(id,c,s,r,valor,cantP,peso,es);
-		
+			new Orden(c,s,r,valor,p,peso,es);
+			menuOrden();
+			break;
+
 		case "3":
 			Orden.consultarOrdenesActivas();
 			System.out.println("Ingrese el indice de la orden que desea modificar");
@@ -190,7 +213,7 @@ public class Main {
 			System.out.println("¿Qué desea modificar?");
 			System.out.println("Seleccione una opcion: ");
 			String aux4="\n1 - ID de orden \n2 - Cliente de orden \n3 - Sede de orden \n4 - Repartidor de orden \n5 - Valor de orden \n6 - Cantidad de productos de orden \n7 - Peso total de orden \n8 - Estado de la Orden \n9 - Regresar";
-			System.out.println(aux);
+			System.out.println(aux4);
 			while (true) {
 				op=in.next();
 				if(op.equals("1") || op.equals("2") || op.equals("3") || op.equals("4") || op.equals("5") || op.equals("6") || op.equals("7") || op.equals("8") || op.equals("9")) {
@@ -210,7 +233,6 @@ public class Main {
 						if(isNumeric(ch)){
 							aux2.setId(Integer.parseInt(ch));
 							System.out.print("Cambio realizado\n");
-							menuOrden();
 							break;
 						}
 						else {
@@ -218,6 +240,7 @@ public class Main {
 							System.out.println(aux);
 						}
 					}
+					break;
 			case "2":
 				Cliente.verClientes();
 				System.out.println("Ingrese el indice del cliente nuevo de la orden");
@@ -226,14 +249,13 @@ public class Main {
 					if(cli1>=0 && cli1<Cliente.getClientes().size()) {
 						aux2.setCliente(Cliente.getClientes().get(cli1));;
 						System.out.println("Cambio realizado\n");
-						menuOrden();
 						break;
 					}
 					else {
 						System.out.println("Ingrese un indice valido");
 					}
 				}
-				
+				break;
 			case "3":
 				Sede.consultarSedes();
 				System.out.println("Ingrese el indice de la sede nueva de la orden");
@@ -241,15 +263,14 @@ public class Main {
 					int sed1=in.nextInt();
 					if(sed1>=0 && sed1<Sede.getSede().size()) {
 						aux2.setSede(Sede.getSede().get(sed1));
-						System.out.println("Cambio realizado, siga modificando \n");
-						menuOrden();
+						System.out.println("Cambio realizado\n");
 						break;
 					}
 					else {
 						System.out.println("Ingrese un indice valido");
 					}
 				}
-				
+				break;
 			case "4":
 				Repartidor.verRepartidores();
 				System.out.println("Ingrese el indice del repartidor nuevo de la orden");
@@ -257,15 +278,14 @@ public class Main {
 					int rep1=in.nextInt();
 					if(rep1>=0 && rep1<Repartidor.getRepartidores().size() && Repartidor.getRepartidores().get(rep1).disponibilidad==true ) {
 						aux2.setRepartidor(Repartidor.getRepartidores().get(rep1));
-						System.out.println("Cambio realizado, siga modificando \n");
-						menuOrden();
+						System.out.println("Cambio realizado\n");
 						break;
 					}
 					else {
 						System.out.println("Ingrese un indice valido");
 					}
 				}
-				
+				break;
 			case "5":
 				System.out.println("Ingrese un nuevo valor de la orden :");
 				aux="Ingrese un nuevo valor de la orden :";
@@ -274,7 +294,6 @@ public class Main {
 					if(isNumeric(ch)){
 						aux2.setValor(Integer.parseInt(ch));
 						System.out.print("Cambio realizado\n");
-						menuOrden();
 						break;
 					}
 					else {
@@ -282,6 +301,7 @@ public class Main {
 						System.out.println(aux);
 					}
 				}
+				break;
 			case "6":
 				System.out.println("Ingrese una nueva cantidad de productos en la orden :");
 				aux="Ingrese una nueva cantidad de productos en la orden :";
@@ -289,8 +309,7 @@ public class Main {
 					ch=in.next();
 					if(isNumeric(ch)){
 						aux2.setCantProductos(Integer.parseInt(ch));
-						System.out.print("Cambio realizado, siga modificando \n");
-						menuOrden();
+						System.out.print("Cambio realizado\n");
 						break;
 					}
 					else {
@@ -298,6 +317,7 @@ public class Main {
 						System.out.println(aux);
 					}
 				}
+				break;
 			case "7":
 				System.out.println("Ingrese un nuevo peso total de la orden :");
 				aux="Ingrese un nuevo peso total de la orden :";
@@ -305,8 +325,7 @@ public class Main {
 					ch=in.next();
 					if(isNumeric(ch)){
 						aux2.setPesoTotal(Integer.parseInt(ch));
-						System.out.print("Cambio realizado, siga modificando \n");
-						menuOrden();
+						System.out.print("Cambio realizado\n");
 						break;
 					}
 					else {
@@ -314,16 +333,36 @@ public class Main {
 						System.out.println(aux);
 					}
 				}
+				break;
 			case "8":
-				System.out.println("Ingrese un nuevo estado de la orden :");
-				aux2.setEstado(in.next());
-				System.out.print("Cambio realizado, siga modificando \n");
-				menuOrden();
+				System.out.println("Ingrese un nuevo estado de la orden (Aceptada, Entregada o Recogida) :");
+				aux="Ingrese un nuevo estado de la orden :";
+				while(true) {
+					ch=in.next();
+					if(ch.equals("Aceptada") || ch.equals("Entregada") || ch.equals("Recogida")){
+
+						if(ch.equals("Aceptada")) {
+							aux2.aceptarOrden();
+						}
+						else if (ch.equals("Entregada")) {
+							aux2.ordenEntregada();
+						}
+						else if (ch.equals("Recogida")) {
+							aux2.ordenRecogida();
+						}
+						break;
+					}
+					else {
+						System.out.println("Ingresa una opcion valida");
+						System.out.println(aux);
+					}
+				}
 				break;
 			case "9":
-				Main.menuOrden();
 				break;
 			}
+			menuOrden();
+			break;
 		case "4":
 			Orden.consultarOrdenesActivas();
 			System.out.println("Ingrese el indice de la orden que desea eliminar");
@@ -333,13 +372,14 @@ public class Main {
 					Orden.cancelarOrden(u);
 					System.out.println("Se ha eliminado el elemento, volvera al menu de ordenes");
 					menuOrden();
+					break;
 				}
 				else {
 					System.out.println("Ingresa una opcion valida");
 					System.out.println(aux);
 				}
 			}
-			
+			break;
 		case "5":
 			menuInicial();
 			break;
@@ -471,9 +511,7 @@ public class Main {
 			String descripcion = in.next();
 			System.out.print("\nIngrese el precio del producto: ");
 			long precio = in.nextLong();
-			System.out.print("\nIngrese la cantidad del producto: ");
-			int cantidad = in.nextInt();
-			Producto.agregarProducto(nombre, descripcion, precio, cantidad);
+			Producto.agregarProducto(nombre, descripcion, precio);
 			menuProductos();
 			break;
 			
